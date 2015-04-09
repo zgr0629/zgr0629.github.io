@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS3 实现折纸角效果 | Hexo</title>
+  <meta name="author" content="Gary">
+  
+  <meta name="description" content="前两天去了一次 html5 分享沙龙，突然对 css3 的一些效果感兴趣起来。写了一个折纸角效果。
+用到的主要是css3中旋转的属性rotate，还有强大的background中linear-gradient属性。
+整个折角由两个部分组成，一个是折角体，一个是用来遮挡背景的块。
+用到的主要是属性是l">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CSS3 实现折纸角效果"/>
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Hexo</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-17T12:13:00.000Z"><a href="/2012/07/17/CSS3 实现折纸角效果/">2012-07-17</a></time>
+      
+      
+  
+    <h1 class="title">CSS3 实现折纸角效果</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>前两天去了一次 html5 分享沙龙，突然对 css3 的一些效果感兴趣起来。写了一个折纸角效果。</p>
+<p>用到的主要是css3中旋转的属性rotate，还有强大的background中linear-gradient属性。</p>
+<p>整个折角由两个部分组成，一个是折角体，一个是用来遮挡背景的块。</p>
+<p>用到的主要是属性是linear-gradient，将矩形块的背景设置成以对角线分开，一边是背景色（紫色），一边是纸条的颜色。</p>
+<p>然后利用rotate，将它旋转。</p>
+<p>然后定位到合适位置，这样，就是一个折角了。</p>
+<p>最后用小块把多余的背景盖住。一个折角就做好了。</p>
+<p>这个做法的优点：用css伪类before和after生成折角，html结构中没有多余元素，干净。</p>
+<p>缺点：在折角的上方会多出来一块，如不设置好margin-top，则会挡住其他元素，露馅。</p>
+<p>以下是实现方法及demo，这里是源码：<a href="/uploads/files/css3_paper_corner_effect.html">css3_paper_corner_effect</a></p>
+<style>
+.bg_purple{background-color:#CFCFFF;margin:15px auto;padding:20px;}
+.bg_purple h1{text-align:center;}
+.bg_purple .tips{width:300px;height:100px;margin:25px auto;text-align:center;line-height:100px;font-size:24px;font-weight:bold;position:relative;}
+.bg_purple .conner{display:block;position:relative;}
+.bg_purple .conner:after{content:"";-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;position:absolute;right:14px;top:-15px;box-shadow:-4px 4px 3px -3px #000000;}
+.bg_purple .conner:before{content:"";background-color:#CFCFFF;height:40px;width:40px;position:absolute;right:0;top:0;}
+.bg_purple .yellow{background-color:#FFFFA9;}
+.bg_purple .yellow:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;}
+.bg_purple .green{background-color:#CFFFCF;}
+.bg_purple .green:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#CFFFCF 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#CFFFCF 50%) repeat scroll 0 0 transparent;}
+.bg_purple .red{background-color:#FFCFCF;}
+.bg_purple .red:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFCFCF 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFCFCF 50%) repeat scroll 0 0 transparent;}
+</style>
+
+<div class="bg_purple"><br><br><style><br>.one{border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;margin:10px auto;}<br>.two{-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;margin:10px auto;box-shadow:-4px 4px 3px -3px #000000;}<br>.three{-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;position:absolute;right:14px;top:-15px;box-shadow:-4px 4px 3px -3px #000000;}<br>.hidebg{border:1px #000 solid;content:””;background-color:#CFCFFF;height:40px;width:40px;position:absolute;right:0;top:0;}<br></style><br><br><p>第一步：做一个方框，利用linear-gradient属性，将矩形块的背景设置成以对角线分开，一边是背景色（紫色），一边是纸条的颜色（黄色）。两个渐变色的起始点设置成同一点，即50%，这样就可以在二分之一处颜色突变，从而产生一条明显的分界线的效果。然后用-150deg，把这条颜色分界线旋转为对角线。这里为了方便看清方块，将边框设置了1px</p><br><div class="one"></div><br><p>第二步：利用rotate，将它旋转，并且加上阴影。</p><br><div class="two"></div><br><p>第三步：放到大的div中，调整位置。</p><br><div class="tips yellow"><div class="three"></div>黄色纸条</div><br><p>第四步：加上一个块，把多余的背景盖住</p><br><div class="tips yellow"><div class="hidebg"></div><div class="three"></div>黄色纸条</div><br><p>OK！隐藏掉这些块的border之后就大功告成啦！</p><br><h1>CSS3实现折角Demo</h1><br><div class="tips conner yellow">黄色纸条</div><br><div class="tips conner green">绿色纸条</div><br><div class="tips conner red">红色纸条</div><br></div>
+
+
+
+<p>以下是相关代码</p>
+<p>css部分：</p>
+<pre><code><span class="variable"><span class="keyword">var</span> a</span>=<span class="number">1</span>;
+jaskdfjskldf;
+sadfasdf;
+</code></pre><p>html部分十分简洁：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"bg_purple"</span> &gt;
+    &lt;h1&gt;CSS3实现折角Demo&lt;/h1&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner yellow"</span> &gt;黄色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner green"</span> &gt;绿色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner red"</span> &gt;红色纸条&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://zgr0629.github.io/2012/07/17/CSS3 实现折纸角效果/index.html" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜尋">
+    <input type="hidden" name="q" value="site:zgr0629.github.io">
+  </form>
+</div>
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 Gary
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

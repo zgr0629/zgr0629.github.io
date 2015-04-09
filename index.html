@@ -49,6 +49,876 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/用.htaccess将主域名从网站根目录指向子目录/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/用.htaccess将主域名从网站根目录指向子目录/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: 用.htaccess将主域名从网站根目录指向子目录</p>
+<p>Date: 2012-05-10 20:54:01</p>
+<p>URL: /redirect-your-website-rootdir-to-subdir-by-using-htaccess-file/</p>
+<p>Tags: .htaccess , 重定向</p>
+<p>这个博客原本是要访问 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 来访问的。</p>
+<p>我在根目录下放了一个 index.html ，里面的 js 控制自动跳转到 /blog。这样一来，访问<a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 会自动跳到 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 去。</p>
+<p>但是今天突然想把自己的网站整一下，因为这个自动跳转很不利于SEO，而且 qiangblog 这个域名有很强的博客意向。如果总有个 /blog 挂在后面感觉不好看呐。所以我想弄成直接访问 <a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 就到博客里。并且相应的子目录依旧能用 <a href="http://www.qiangblog.com/subdir" target="_blank" rel="external">http://www.qiangblog.com/subdir</a> 访问。</p>
+<p>最简单的方法是把 wordpress 装在虚拟主机的根目录下。但是这样目录会变得杂乱，其他项目会跟博客弄到一起，对于整洁强迫症的我来说万万不可。后来看到 wordpress 里有<a href="http://codex.wordpress.org/zh-cn:将_WordPress_文件置于独立子目录" title="自带一种方法" target="_blank" rel="external">自带一种方法</a>实现这个功能。但是还是要改变目录结构，依旧不能达到我的要求。</p>
+<p>今天看到一个 .htaccess 的设置方法。可以实现我想要的效果。编辑根目录下的 .htaccess ，设置好相应参数就完全可以实现我想要的功能了。利于SEO是最爽的事情了~</p>
+<p>代码如下：</p>
+<pre><code><span class="comment"># .htaccess main domain to subfolder redirect</span>
+<span class="comment"># Copy and paste the following code into the .htaccess file</span>
+<span class="comment"># in the public_html folder of your hosting account</span>
+<span class="comment"># make the changes to the file according to the instructions.</span>
+
+<span class="comment"># Do not change this line.</span>
+
+<span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span>
+
+<span class="comment"># Change yourdomain.com to be your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
+
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_URI}</span> !^/subfolder/
+
+<span class="comment"># Don’t change this line.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-f
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-d
+
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ /subfolder/<span class="number">$1</span>
+
+<span class="comment"># Change yourdomain.com to be your main domain again.</span>
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain</span>
+<span class="comment"># followed by / then the main file for your site, index.php, index.html, etc.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
+<span class="keyword"><span class="common">RewriteRule</span></span> ^(/)?$ subfolder/index.php<span class="sqbracket"> [L]</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/使用eval动态创建js函数/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/使用eval动态创建js函数/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: 使用eval动态创建js函数</p>
+<p>Date: 2012-07-04 18:26:58</p>
+<p>URL: /use-eval-dynamically-create-functions/</p>
+<p>JavaScript有许多小窍门来使编程更加容易。</p>
+<p>其中之一就是eval()函数，这个函数可以把一个字符串当作一个JavaScript表达式一样去执行它。前段时间项目中就用到了这个技术，巧妙的解决了问题。</p>
+<p>项目中用到这样的技术：在本页用js拉取一个接口、告诉接口回调函数名、接口的回包里直接调用这个函数。这样一来，回调函数的调用，就全交给接口写的回包里做了。</p>
+<p>页面js如下</p>
+<pre><code>main()
+{
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface'</span>);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
+    ...
+    ...
+}
+</code></pre><p>someInterface的回包如下</p>
+<p>var return_obj={<br>    “retcode”:”200”,<br>    “msg”:”Query userid success!”,<br>    “username”:”xiaoqiang”<br>};if(typeof bk_someInterface==’function’) bk_someInterface(return_obj);</p>
+<p>这样做比较方便，回调函数名由调用的函数给接口，接口的回包照写函数名就行了。可是这里也会遇到一些问题，如果这个接口在同一页面需要同时多次调用，那么回调函数则会异步执行。在这种情况下，回调函数就不知道当前的回包数据对应的哪次请求了。以前的解决办法是多给接口一个参数，回包的时候照写就行了。这样，需要修改一下接口程序。</p>
+<p>以前的解决办法：</p>
+<pre><code>main()
+{
+    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface&amp;extra='</span> extraParameter);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
+    ...
+    ...
+}
+
+<span class="keyword">var</span> return_obj={
+    <span class="string">"retcode"</span>:<span class="string">"200"</span>,
+    <span class="string">"msg"</span>:<span class="string">"Query userid success!"</span>,
+    <span class="string">"extra"</span>:<span class="string">"0.1155661893165"</span>,
+    <span class="string">"username"</span>:<span class="string">"xiaoqiang"</span>
+};<span class="keyword">if</span>(<span class="keyword">typeof</span> bk_someInterface==<span class="string">'function'</span>) bk_someInterface(return_obj);
+</code></pre><p>如上，这样写需要改动接口程序，以前接口都是自己用自己写，加个参数之类的改动很方便，但不是所有的项目接口都是自己这边写，前段时间做项目就遇到这个情况，研究了下解决办法。以用JS里的eval动态创建函数来解决。</p>
+<p>思路是这样的，既然回包里固定了调用回调函数的格式，即 callbackfunctionname(return_obj)，那么改动就必须在其他地方完成。最终我需要回包里的return_obj对象和一些附加参数。那么就可以另外定义一个函数，作为新的回调函数，在这个函数里定义附加参数，然后把附加函数和 return_obj 一起传给原先的回调函数。这样就可以解决了。动态定义函数用eval完成即可。</p>
+<p>解决办法如下:</p>
+<pre><code>main()
+{
+    <span class="comment">//自定义的随机附加参数</span>
+    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
+    <span class="comment">//拿一个时间戳</span>
+    <span class="keyword">var</span> timestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();
+    <span class="comment">//定义动态函数名，函数名包含这个时间戳，保证不重名</span>
+    <span class="keyword">var</span> bkfunctionname = <span class="string">"bk_someInterface_"</span> + timestamp;
+    <span class="comment">//创建这个动态函数，函数里先定义了附加参数，然后调用原来的回调函数。</span>
+    <span class="built_in">eval</span>( bkfunctionname + <span class="string">' = function(retobj){var extra = "'</span>+extraParameter+<span class="string">'";bk_someInterface(retobj, extra);} '</span>);
+    <span class="comment">//所以在拉取接口的时候可以不用写 extraParameter，extraParameter 已经在新的回调中赋值了。</span>
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback='</span>+bkfunctionname);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj, _extra )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据，同时也可以拿到自己定义的 _extra 了</span>
+    ...
+    ...
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/世界，你好！/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/世界，你好！/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: 世界，你好！</p>
+<p>Date: 2012-03-05 14:24:46</p>
+<p>URL: /hello-world/</p>
+<p>工作一年了，特别谢谢七宝给我建立博客的建议。以前一直不注重这些东西，现在想想挺重要的。</p>
+<p>这个博客策划时间不长，主要想分享前端技术，记录自己工作中的经验，希望各位喜欢。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/[转]Javascript实现简单的链式调用/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/[转]Javascript实现简单的链式调用/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: [转]Javascript实现简单的链式调用</p>
+<p>Date: 2012-05-03 10:56:11</p>
+<p>URL: /a-simple-way-of-the-javascript-chain-call/</p>
+<p>Tags: call , chain , Javascript , 链式调用</p>
+<p>昨天看到一篇很不错的链式调用文章，存在这里记一下。</p>
+<p>原帖地址：<a href="http://www.css88.com/archives/4524" title="http://www.css88.com/archives/4524" target="_blank" rel="external">http://www.css88.com/archives/4524</a></p>
+<p>用过jQuery的朋友一定对jQuery中方法的链式调用印象深刻，貌似现在很多库都支持了方法的链式调用,比如YUI3等。链式调用是一个非常不错的语法特性，能让代码更加简洁、易读。很多时候链式调用可以避免多次重复使用一个对象变量。今天有人在群里说起javascript链式调用，写了几个简单的实现方式共大家参考一下：</p>
+<p>一般我们我用函数构造一个类，例如：</p>
+<pre><code><span class="keyword">var</span> <span class="function"><span class="keyword">function</span> <span class="title">Dog</span><span class="params">(name,age)</span></span>{
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
+};
+Dog.prototype={
+    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+    },
+    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+    }
+};
+</code></pre><p>定义一个Dog类，并具备几个简单的方法</p>
+<pre><code>var dog1= <span class="keyword">new</span> <span class="type">Dog</span>(<span class="string">"旺旺"</span>,<span class="number">3</span>);
+dog1.getName<span class="literal">()</span>;
+dog1.getAge<span class="literal">()</span>;
+</code></pre><p>实例化，并且调用方法。</p>
+<p>要实现链式调用是非常简单的事情，唯一需要做的就是在每个方法后面返回this。例如：</p>
+<pre><code><span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
+};
+Dog.prototype={
+    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    },
+    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+};
+
+<span class="keyword">var</span> dog1= <span class="keyword">new</span> Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>);
+dog1.getName().getAge();
+</code></pre><p>上面的代码可以看出，Dog方法上多了一段代码：return this;</p>
+<p>细心一点你会发现这里dog1实例前还需要一个new初始化，还是有点不方便。在改进一下：</p>
+<pre><code><span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
+};
+Dog.prototype={
+    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    },
+    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+    };
+    <span class="built_in">window</span>.Dogs=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+    <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
+};
+Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
+</code></pre><p>这里在window下定义一个Dogs方法，作为Dog的别名，这样就可以直接用Dogs(“旺旺”,3).getName().getAge();这样调用了。</p>
+<p>苛刻的网友说这样太暴露了，这样有两个全局变量变量Dog和Dogs，在改进一下：</p>
+<pre><code><span class="keyword">var</span> Dog = <span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+    <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
+        <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
+    }
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.age = age;
+};
+
+Dog.prototype={
+    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    },
+    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+};
+Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
+</code></pre><p>这里在构造函数中加了这么一句：</p>
+<pre><code><span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
+    <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
+}
+</code></pre><p>判断this是否为Dog实例，如果不是就创建一个新实例。</p>
+<p>更为安全代码：</p>
+<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+        <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
+            <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
+        }
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    };
+    Dog.prototype={
+        getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        },
+        getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+    };
+    <span class="keyword">return</span> (<span class="built_in">window</span>.Dog=Dog);
+})();
+Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
+</code></pre><p>或者：</p>
+<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+    <span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    };
+    Dog.prototype={
+        getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        },
+        getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+            <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+    };
+    <span class="built_in">window</span>.Dogs=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
+    };
+})();
+Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
+</code></pre><p>希望对新手有所帮助，如有不对之处欢迎留言拍砖斧正！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/Verite Timeline/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/Verite Timeline/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: Verite Timeline</p>
+<p>Date: 2012-04-26 16:05:34</p>
+<p>Status: draft</p>
+<p>[timeline src=”<a href="https://docs.google.com/spreadsheet/pub?key=0Alk_U5fNEpNfdE50QUx1cmJwUERXcjZjNXQ2d1hiMEE&amp;output=html" target="_blank" rel="external">https://docs.google.com/spreadsheet/pub?key=0Alk_U5fNEpNfdE50QUx1cmJwUERXcjZjNXQ2d1hiMEE&amp;output=html</a>“ width=”100%” height=”650” maptype=”terrain”]</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/Textarea大小自适应/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/Textarea大小自适应/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: Textarea大小自适应</p>
+<p>Date: 2012-05-02 11:49:49</p>
+<p>URL: /textarea-size-auto-adaptation/</p>
+<p>Tags: textarea , 前端技术 , 大小自适应 , 自适应</p>
+<p>很久很久以前，七宝帮远在英国的肉肉同学重构一个网页，网页上有个留言的textarea。</p>
+<p>由此她给我提了一个页面的问题：如何让一个textarea的大小根据内容来自动变大呢，类似微博那种。</p>
+<p>当时研究了一下，原本的思路是计算单个文字大小高度，然后算有多少行然后调整高度。发现有兼容性问题，而且也比较麻烦。</p>
+<p>昨天彻底的研究了一下，换了一个思路。因为DOM中，scrollHeight这个属性，可以取到该元素实际内容的高度，这样，就可以直接把textarea高度设置成scrollHeight就行了。方法简单了许多。最近在做模块化的东西，很想脱离jQuery的束缚，所以这次全部用DOM操作，做成了独立的一个js。</p>
+<p>适用于主流浏览器，自测ie7/8/9,FireFox 10,Chrome 20.0.1096.1 通过。</p>
+<p>Demo<a href="/lab/autotextarea/autotextarea.html" title="autoTextarea Demo">在此</a></p>
+<p>以下是相关代码</p>
+<p>autoTextarea.js:</p>
+<pre><code><span class="keyword">var</span> autoTextarea = <span class="function"><span class="keyword">function</span> <span class="params">(elem)</span>
+</span>{
+    elem.style.resize = <span class="string">'none'</span>;
+
+    minHeight = elem.currentStyle ?
+        <span class="built_in">parseFloat</span>(elem.currentStyle[<span class="string">'height'</span>]) : <span class="built_in">parseFloat</span>(<span class="built_in">document</span>.defaultView.getComputedStyle(elem, <span class="literal">null</span>)[<span class="string">'height'</span>]);
+
+    <span class="keyword">var</span> adjust = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
+        <span class="keyword">if</span> (elem._length === elem.value.length) <span class="keyword">return</span>;
+        elem._length = elem.value.length;
+
+        elem.style.height = minHeight + <span class="string">'px'</span>;
+        <span class="keyword">if</span> (elem.scrollHeight &gt; minHeight)
+        {
+            elem.style.overflowY = <span class="string">'hidden'</span>;
+            elem.style.height = elem.scrollHeight + <span class="string">'px'</span>;
+        }
+
+    };
+
+    addEvent = <span class="function"><span class="keyword">function</span> <span class="params">(type, callback)</span> </span>{
+        elem.addEventListener ?
+            elem.addEventListener(type, callback, <span class="literal">false</span>) :
+            elem.attachEvent(<span class="string">'on'</span> + type, callback);
+    };
+
+    addEvent(<span class="string">'keydown'</span>, adjust);
+    addEvent(<span class="string">'keyup'</span>, adjust);
+    addEvent(<span class="string">'propertyadjust'</span>, adjust);
+    addEvent(<span class="string">'input'</span>, adjust);
+    addEvent(<span class="string">'focus'</span>, adjust);
+    adjust();
+};
+</code></pre><p>autoTextarea.html:</p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>文本框自适应<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"autoTextarea.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
+        <span class="id">#textarea</span> <span class="rules">{
+            <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200px</span></span></span>;
+            <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;
+            <span class="rule"><span class="attribute">overflow-y</span>:<span class="value"> hidden</span></span>;
+            <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#000</span></span></span>;
+        }</span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>请在下面的输入框输入内容测试自适应<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">id</span>=<span class="value">"textarea"</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="applescript">
+        var <span class="type">text</span> = document.getElementById(<span class="string">"textarea"</span>);
+        autoTextarea(<span class="type">text</span>);
+    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/PHP的单例模式/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/PHP的单例模式/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: PHP的单例模式</p>
+<p>Date: 2013-03-26 15:30:02</p>
+<p>URL: /singleton-pattern-with-php/</p>
+<p>接上一次的《<a href="/post/tree-structure-with-php/" title="PHP实现树形结构">PHP实现树形结构</a>》。由于菜单中的各种品类基本不变，跑同一次程序时候不会变化，所以只需在数据库查询一次，第一次初始化的时候查询好结果，以后每次取用即可直接返回。这里用php实现单例模式就能实现。</p>
+<p>所谓单例模式是指整段程序中，类或者对象只会有一个实例的的设计模式。这种模式特别适合和数据库打交道的程序，比如上面所说的简历菜单树，因为只有一个实例，节省内资源，不用重复查询重复建立连接。</p>
+<p>要实现单例模式，以下两点是重点：</p>
+<p>1.他的构造函数必须声明为私有，否则其他地方可以随意new，失去了单例的意义。</p>
+<p>2.由于外界不能new，所以内部要增加一个公共静态方法给外部取用这个实例。</p>
+<p>另外，还可以注意一下以后的扩展。比如另外的树形结构也可以添加进来。</p>
+<p>下面这段代码实现了菜单树的单例工厂模式，并且有一定的扩展性。文章最后会说明PHP单例模式的一些特点和不足。</p>
+<pre><code><span class="comment">/*
+ * 树的单例工厂模式
+ *<span class="phpdoc"> @author</span> zhengguorui
+ */</span>
+
+<span class="class"><span class="keyword">class</span> <span class="title">TreeFactory</span></span>{
+
+    <span class="comment">// 工厂类初始化标记</span>
+    <span class="keyword">static</span> <span class="keyword">public</span> <span class="variable">$instance</span>;
+
+    <span class="comment">//声明私有构造方法为了防止外部代码使用new来创建对象。</span>
+    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span>{}
+
+    <span class="comment">// menu私有唯一实例</span>
+    <span class="keyword">private</span> <span class="variable">$TreeOfMenu</span>;
+
+    <span class="comment">// menu的初始化方法</span>
+    <span class="keyword">static</span> <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">initMenu</span><span class="params">()</span></span>{
+        <span class="keyword">self</span>::<span class="variable">$instance</span>-&gt;TreeOfMenu = <span class="keyword">new</span> TreeMenu ( <span class="string">'目录导航'</span> );
+        <span class="variable">$tb</span> = <span class="keyword">new</span> IModel(<span class="string">'category'</span>);
+        <span class="variable">$list</span> = <span class="variable">$tb</span>-&gt;query(<span class="string">"visibility=1"</span>, <span class="string">"*"</span>, <span class="string">"parent_id, sort, id"</span>);
+        <span class="comment">// 设置树形结构 </span>
+        <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$list</span>); <span class="variable">$i</span>++) {
+            <span class="keyword">self</span>::<span class="variable">$instance</span>-&gt;TreeOfMenu-&gt;setNode ( <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"id"</span>], <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"parent_id"</span>], <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"name"</span>] );
+        }
+        <span class="comment">//设置每个节点的品牌列表</span>
+        <span class="variable">$tb</span> = <span class="keyword">new</span> IModel(<span class="string">'category_extend, brand, goods'</span>);
+        <span class="variable">$list</span> = <span class="variable">$tb</span>-&gt;query(<span class="string">"shop_goods.id = shop_category_extend.goods_id and shop_brand.id = shop_goods.brand_id and shop_goods.is_del=0"</span>, <span class="string">"DISTINCT category_id, shop_goods.brand_id, shop_brand.name"</span>, <span class="string">"category_id, brand_id"</span>); 
+        <span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; count(<span class="variable">$list</span>); <span class="variable">$i</span>++) {
+            <span class="keyword">self</span>::<span class="variable">$instance</span>-&gt;TreeOfMenu-&gt;setBrand ( <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"category_id"</span>], <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"brand_id"</span>], <span class="variable">$list</span>[<span class="variable">$i</span>][<span class="string">"name"</span>] );
+        }
+    }
+
+    <span class="comment">// 工厂类和各种实例的初始化总入口</span>
+    <span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getinstance</span><span class="params">(<span class="variable">$instType</span>)</span></span>{
+        <span class="keyword">if</span>(!<span class="keyword">self</span>::<span class="variable">$instance</span>){
+            <span class="comment">// 第一次则新建并初始化对象</span>
+            <span class="keyword">self</span>::<span class="variable">$instance</span> = <span class="keyword">new</span> <span class="keyword">self</span>();
+        }
+
+        <span class="comment">// menu的初始化</span>
+        <span class="keyword">if</span>(<span class="variable">$instType</span>==<span class="string">"menu"</span>){
+            <span class="keyword">if</span>(!<span class="keyword">self</span>::<span class="variable">$instance</span>-&gt;TreeOfMenu){
+                <span class="keyword">self</span>::initMenu();
+            }
+            <span class="comment">// 返回menu实例</span>
+            <span class="keyword">return</span> <span class="keyword">self</span>::<span class="variable">$instance</span>-&gt;TreeOfMenu;
+        }
+
+        <span class="keyword">return</span> <span class="keyword">self</span>::<span class="variable">$instance</span>;
+    }
+
+}
+</code></pre><p>虽然PHP单例模式可以优化一部分问题，但由于PHP是一种解释型的脚本语言，在吐回页面之后，程序就会消亡。这一点上，php和c以及java这类常驻型程序是不同的。所以PHP的单例模式仅仅是在一次程序的执行中单例，而不能跨用户跨页面实现单例。这也使得PHP的单例模式显得那么“山寨”，只适合用在单页面中触发大量查询请求的页面上。若需要长连接或者处理大量用户查询的网关，还是得由c来接手，这也不得不说是PHP语言上的一种遗憾吧！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-09T11:13:25.000Z"><a href="/2015/04/09/PHP实现树形结构/">2015-04-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/04/09/PHP实现树形结构/"></a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Title: PHP实现树形结构</p>
+<p>Date: 2013-03-26 14:43:23</p>
+<p>URL: /tree-structure-with-php/</p>
+<p>商城的菜单导航需要扩充大类，变成多级菜单。于是建立树形结构是比较好的方法。</p>
+<p><a href="/uploads/images/shop_menu.jpg"><img src="/uploads/images/shop_menu.jpg" alt="商城菜单"></a></p>
+<p>一般来说，树形结构有两种方法存储，数组存储和节点指针方式。因为这次是给同事做底层库，菜单分类不多，撑死不会过一千。所以决定用数组方式，特点是快，易理解和调试。指针的调试怎么的也比数组来的难吧！</p>
+<p>现有的数据库表里，存有每个分类（node节点）的自身id和上级id。</p>
+<p>所以我想做成类似这种添加节点的方式：$tree-&gt;setnode(id, parentId, xxx);</p>
+<p>于是乎觉得，用数组再合适不过了。</p>
+<p>以下方法实现了最基本的树结构，包括添加node，取node值，遍历父节点路径，取儿子集合等等常用操作。可以很方便的扩展成适用自己需求的树，下面会提到。</p>
+<pre><code><span class="comment">/*
+ * 实现树形结构的基类
+ *<span class="phpdoc"> @author</span> zhengguorui
+ */</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Tree</span> </span>{
+    <span class="comment">// 节点名称</span>
+    <span class="keyword">var</span> <span class="variable">$data</span> = <span class="keyword">array</span> ();
+    <span class="comment">// 以下三个为实现树结构的数组</span>
+    <span class="keyword">var</span> <span class="variable">$child</span> = <span class="keyword">array</span> (- <span class="number">1</span> =&gt; <span class="keyword">array</span> () );    <span class="comment">// 节点的儿子</span>
+    <span class="keyword">var</span> <span class="variable">$parent</span> = <span class="keyword">array</span> ();                    <span class="comment">// 节点的父亲</span>
+    <span class="keyword">var</span> <span class="variable">$layer</span> = <span class="keyword">array</span> (- <span class="number">1</span> =&gt; - <span class="number">1</span> );         <span class="comment">// 节点的深度</span>
+
+    <span class="comment">/*
+     * 默认根节点为0，其父亲节点为-1
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">Tree</span><span class="params">(<span class="variable">$value</span>)</span> </span>{
+        <span class="variable">$this</span>-&gt;setNode ( <span class="number">0</span>, - <span class="number">1</span>, <span class="variable">$value</span> );
+    }
+
+    <span class="comment">/* 设置新节点。
+     * （自身id，父节点id，名称）
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">setNode</span><span class="params">(<span class="variable">$id</span>, <span class="variable">$parent</span>, <span class="variable">$value</span>)</span> </span>{
+        <span class="variable">$parent</span> = <span class="variable">$parent</span> ? <span class="variable">$parent</span> : <span class="number">0</span>;
+
+        <span class="comment">// 存节点名</span>
+        <span class="variable">$this</span>-&gt;data[<span class="variable">$id</span>] = <span class="variable">$value</span>;
+        <span class="comment">// 存子节点</span>
+        <span class="variable">$this</span>-&gt;child[<span class="variable">$id</span>] = <span class="keyword">array</span> ();
+        <span class="comment">// 设置父节点的子为自己</span>
+        <span class="variable">$this</span>-&gt;child[<span class="variable">$parent</span>] [] = <span class="variable">$id</span>;
+        <span class="comment">// 设置父节点</span>
+        <span class="variable">$this</span>-&gt;parent [<span class="variable">$id</span>] = <span class="variable">$parent</span>;
+        <span class="comment">// 设置节点层级</span>
+        <span class="keyword">if</span> (! <span class="keyword">isset</span> ( <span class="variable">$this</span>-&gt;layer [<span class="variable">$parent</span>] )) {
+            <span class="variable">$this</span>-&gt;layer [<span class="variable">$id</span>] = <span class="number">0</span>;
+        } <span class="keyword">else</span> {
+            <span class="variable">$this</span>-&gt;layer [<span class="variable">$id</span>] = <span class="variable">$this</span>-&gt;layer [<span class="variable">$parent</span>] + <span class="number">1</span>;
+        }
+    }
+
+    <span class="comment">/*
+     * 递归取子节点集合
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getList</span><span class="params">(&amp;<span class="variable">$tree</span>, <span class="variable">$root</span> = <span class="number">0</span>)</span> </span>{
+        <span class="keyword">foreach</span> ( <span class="variable">$this</span>-&gt;child[<span class="variable">$root</span>] <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$id</span> ) {
+            <span class="comment">// 取root的子节点</span>
+            <span class="variable">$tree</span> [] = <span class="variable">$id</span>;
+            <span class="comment">// 递归取子节点的子节点</span>
+            <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;child[<span class="variable">$id</span>])
+                <span class="variable">$this</span>-&gt;getList ( <span class="variable">$tree</span>, <span class="variable">$id</span> );
+        }
+    }
+
+    <span class="comment">/*
+     * 返回节点的名称
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getValue</span><span class="params">(<span class="variable">$id</span>)</span> </span>{
+        <span class="keyword">return</span> <span class="variable">$this</span>-&gt;data[<span class="variable">$id</span>];
+    }
+
+    <span class="comment">/*
+     * 返回节点的深度
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getLayer</span><span class="params">(<span class="variable">$id</span>, <span class="variable">$space</span> = false)</span> </span>{
+        <span class="keyword">return</span> <span class="variable">$space</span> ? str_repeat ( <span class="variable">$space</span>, <span class="variable">$this</span>-&gt;layer [<span class="variable">$id</span>] ) : <span class="variable">$this</span>-&gt;layer [<span class="variable">$id</span>];
+    }
+
+    <span class="comment">/*
+     * 返回节点的父亲
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getParent</span><span class="params">(<span class="variable">$id</span>)</span> </span>{
+        <span class="keyword">return</span> <span class="variable">$this</span>-&gt;parent[<span class="variable">$id</span>];
+    }
+
+    <span class="comment">/*
+     * 返回节点的父节点路径，直到root
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getParents</span><span class="params">(<span class="variable">$id</span>)</span> </span>{
+        <span class="keyword">while</span> ( <span class="variable">$this</span>-&gt;parent[<span class="variable">$id</span>] != - <span class="number">1</span> ) {
+            <span class="variable">$id</span> = <span class="variable">$parent</span> [<span class="variable">$this</span>-&gt;layer [<span class="variable">$id</span>]] = <span class="variable">$this</span>-&gt;parent [<span class="variable">$id</span>];
+        }
+        ksort(<span class="variable">$parent</span>);
+        reset(<span class="variable">$parent</span>);
+        <span class="keyword">return</span> <span class="variable">$parent</span>;
+    }
+
+    <span class="comment">/*
+     * 返回直接子节点，仅一层
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getChild</span><span class="params">(<span class="variable">$id</span>)</span> </span>{
+        <span class="keyword">return</span> <span class="variable">$this</span>-&gt;child[<span class="variable">$id</span>];
+    }
+
+    <span class="comment">/*
+     * 返回所有子节点
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getChilds</span><span class="params">(<span class="variable">$id</span> = <span class="number">0</span>)</span> </span>{
+        <span class="variable">$child</span> = <span class="keyword">array</span> (<span class="variable">$id</span> );
+        <span class="variable">$this</span>-&gt;getList ( <span class="variable">$child</span>, <span class="variable">$id</span> );
+        <span class="keyword">return</span> <span class="variable">$child</span>;
+    }
+
+}
+</code></pre><p>上面是实现基本树结构的方法。但是对于本例中的菜单，每个节点（即分类）除了“名字”这个属性外，还有“该分类拥有的品牌”属性。getParents、getChilds等方法，返回的数组没有直接返回 id-&gt;name 这样的数组，实际使用中有些许不便。所以就利用PHP的extends方法重写成适合自己需求的类吧！</p>
+<pre><code><span class="comment">/*
+ * 菜单树形结构类
+ * 增加品牌列表属性
+ * 和getset方法
+ *<span class="phpdoc"> @author</span> zhengguorui
+ */</span>
+<span class="class"><span class="keyword">class</span> <span class="title">TreeMenu</span> <span class="keyword">extends</span> <span class="title">Tree</span></span>{
+    <span class="comment">// 增加新属性，节点拥有的品类</span>
+    <span class="keyword">var</span> <span class="variable">$brands</span> = <span class="keyword">array</span> ();
+
+    <span class="comment">/*
+     * 设置某节点的品类
+     * （节点id，品类id，品类名称）
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">setBrand</span><span class="params">(<span class="variable">$id</span> = <span class="number">0</span>, <span class="variable">$brand_id</span> = -<span class="number">1</span>, <span class="variable">$brand_name</span> = <span class="string">"null"</span> )</span> </span>{
+        <span class="keyword">if</span>( <span class="variable">$iddata</span>[<span class="variable">$id</span>]) )
+            <span class="keyword">return</span>;
+        <span class="comment">// 先给自己的 list 新增</span>
+        <span class="keyword">if</span> (! <span class="keyword">isset</span> ( <span class="variable">$this</span>-&gt;brands [<span class="variable">$id</span>] )) {
+            <span class="variable">$this</span>-&gt;brands [<span class="variable">$id</span>] = <span class="keyword">array</span>();
+        }
+        <span class="keyword">if</span>( !<span class="keyword">isset</span>(<span class="variable">$this</span>-&gt;brands[<span class="variable">$id</span>][<span class="variable">$brand_id</span>]) ){
+            <span class="variable">$this</span>-&gt;brands[<span class="variable">$id</span>][<span class="variable">$brand_id</span>] = <span class="variable">$brand_name</span>;
+        }
+
+        <span class="comment">// 然后递归给自己的父节点新增</span>
+        <span class="keyword">self</span>::setBrand( <span class="keyword">parent</span>::getParent(<span class="variable">$id</span>), <span class="variable">$brand_id</span>, <span class="variable">$brand_name</span>);
+    }
+
+    <span class="comment">/*
+     * 返回节点下拥有的品类列表
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getBrands</span><span class="params">(<span class="variable">$id</span> = <span class="number">0</span>, <span class="variable">$isList</span>=false)</span> </span>{
+        <span class="variable">$origlist</span> = <span class="keyword">array</span>();
+        <span class="keyword">if</span>( <span class="keyword">isset</span>(<span class="variable">$this</span>-&gt;brands[<span class="variable">$id</span>]) ){
+            <span class="variable">$origlist</span> = <span class="variable">$this</span>-&gt;brands[<span class="variable">$id</span>];
+        }
+        <span class="keyword">return</span> <span class="keyword">self</span>::brandtoarray(<span class="variable">$origlist</span>, <span class="variable">$isList</span> );
+    }
+
+    <span class="comment">/*
+     * 返回父节点
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getParent</span><span class="params">(<span class="variable">$id</span>, <span class="variable">$isList</span>=false)</span> </span>{
+        <span class="keyword">if</span>(<span class="variable">$id</span>==<span class="number">0</span>){
+            <span class="keyword">return</span> <span class="keyword">array</span>();
+        }
+        <span class="variable">$origlist</span> = <span class="keyword">parent</span>::getParent(<span class="variable">$id</span>);
+        <span class="keyword">return</span> <span class="keyword">self</span>::idtoarray( <span class="keyword">array</span>(<span class="string">"0"</span>=&gt;<span class="variable">$origlist</span>), <span class="variable">$isList</span> );
+    }
+
+    <span class="comment">/*
+     * 返回节点的父节点路径，直到root
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getParents</span><span class="params">(<span class="variable">$id</span>, <span class="variable">$isList</span>=false)</span> </span>{
+        <span class="variable">$origlist</span> = <span class="keyword">parent</span>::getParents(<span class="variable">$id</span>);
+        <span class="keyword">return</span> <span class="keyword">self</span>::idtoarray(<span class="variable">$origlist</span>, <span class="variable">$isList</span> );
+    }
+
+    <span class="comment">/*
+     * 返回直接子节点，仅一层
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getChild</span><span class="params">(<span class="variable">$id</span>, <span class="variable">$isList</span>=false)</span> </span>{
+        <span class="variable">$origlist</span> = <span class="keyword">parent</span>::getChild(<span class="variable">$id</span>);
+        <span class="keyword">return</span> <span class="keyword">self</span>::idtoarray( <span class="variable">$origlist</span>, <span class="variable">$isList</span> );
+    }
+
+    <span class="comment">/*
+     * 返回所有子节点
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">getChilds</span><span class="params">(<span class="variable">$id</span> = <span class="number">0</span>, <span class="variable">$isList</span>=false)</span> </span>{
+        <span class="variable">$origlist</span> = <span class="keyword">parent</span>::getChilds(<span class="variable">$id</span>);
+        <span class="keyword">return</span> <span class="keyword">self</span>::idtoarray(<span class="variable">$origlist</span>, <span class="variable">$isList</span> );
+    }
+
+    <span class="comment">/*
+     * 将 index-&gt;id 的数组方式转为 id-&gt;name 的方式
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">idtoarray</span><span class="params">(<span class="variable">$origlist</span>, <span class="variable">$isList</span>=false)</span></span>{
+        <span class="variable">$newlist</span> = <span class="keyword">array</span>();
+        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$origlist</span>)){
+            <span class="variable">$newlist</span> = <span class="keyword">array</span>();
+            <span class="keyword">foreach</span> ( <span class="variable">$origlist</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span> ) {
+                <span class="keyword">if</span>(<span class="variable">$isList</span>){
+                    array_push(<span class="variable">$newlist</span>, <span class="keyword">array</span>(
+                        <span class="string">'id'</span>    =&gt;    <span class="variable">$value</span>,
+                        <span class="string">'name'</span>    =&gt;    <span class="keyword">self</span>::getValue(<span class="variable">$value</span>),
+                    ));
+                }<span class="keyword">else</span>{
+                    <span class="variable">$newlist</span>[<span class="variable">$value</span>] = <span class="keyword">self</span>::getValue(<span class="variable">$value</span>);
+                }
+            }
+        }
+        <span class="keyword">return</span> <span class="variable">$newlist</span>;
+    }
+
+    <span class="comment">/*
+     * 将 index-&gt;id 的数组方式转为 id-&gt;name 的方式
+     */</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">brandtoarray</span><span class="params">(<span class="variable">$origlist</span>, <span class="variable">$isList</span>=false)</span></span>{
+        <span class="variable">$newlist</span> = <span class="keyword">array</span>();
+        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$origlist</span>)){
+            <span class="variable">$newlist</span> = <span class="keyword">array</span>();
+            <span class="keyword">foreach</span> ( <span class="variable">$origlist</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span> ) {
+                <span class="keyword">if</span>(<span class="variable">$isList</span>){
+                    array_push(<span class="variable">$newlist</span>, <span class="keyword">array</span>(
+                        <span class="string">'id'</span>    =&gt;    <span class="variable">$key</span>,
+                        <span class="string">'name'</span>    =&gt;    <span class="variable">$value</span>,
+                    ));
+                }<span class="keyword">else</span>{
+                    <span class="variable">$newlist</span>[<span class="variable">$key</span>] = <span class="variable">$value</span>;
+                }
+            }
+        }
+        <span class="keyword">return</span> <span class="variable">$newlist</span>;
+    }
+
+}
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-04-08T02:09:59.000Z"><a href="/2015/04/08/hello-world/">2015-04-08</a></time>
       
       
@@ -69,6 +939,79 @@
 <h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-17T12:13:00.000Z"><a href="/2012/07/17/CSS3 实现折纸角效果/">2012-07-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2012/07/17/CSS3 实现折纸角效果/">CSS3 实现折纸角效果</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>前两天去了一次 html5 分享沙龙，突然对 css3 的一些效果感兴趣起来。写了一个折纸角效果。</p>
+<p>用到的主要是css3中旋转的属性rotate，还有强大的background中linear-gradient属性。</p>
+<p>整个折角由两个部分组成，一个是折角体，一个是用来遮挡背景的块。</p>
+<p>用到的主要是属性是linear-gradient，将矩形块的背景设置成以对角线分开，一边是背景色（紫色），一边是纸条的颜色。</p>
+<p>然后利用rotate，将它旋转。</p>
+<p>然后定位到合适位置，这样，就是一个折角了。</p>
+<p>最后用小块把多余的背景盖住。一个折角就做好了。</p>
+<p>这个做法的优点：用css伪类before和after生成折角，html结构中没有多余元素，干净。</p>
+<p>缺点：在折角的上方会多出来一块，如不设置好margin-top，则会挡住其他元素，露馅。</p>
+<p>以下是实现方法及demo，这里是源码：<a href="/uploads/files/css3_paper_corner_effect.html">css3_paper_corner_effect</a></p>
+<style>
+.bg_purple{background-color:#CFCFFF;margin:15px auto;padding:20px;}
+.bg_purple h1{text-align:center;}
+.bg_purple .tips{width:300px;height:100px;margin:25px auto;text-align:center;line-height:100px;font-size:24px;font-weight:bold;position:relative;}
+.bg_purple .conner{display:block;position:relative;}
+.bg_purple .conner:after{content:"";-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;position:absolute;right:14px;top:-15px;box-shadow:-4px 4px 3px -3px #000000;}
+.bg_purple .conner:before{content:"";background-color:#CFCFFF;height:40px;width:40px;position:absolute;right:0;top:0;}
+.bg_purple .yellow{background-color:#FFFFA9;}
+.bg_purple .yellow:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;}
+.bg_purple .green{background-color:#CFFFCF;}
+.bg_purple .green:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#CFFFCF 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#CFFFCF 50%) repeat scroll 0 0 transparent;}
+.bg_purple .red{background-color:#FFCFCF;}
+.bg_purple .red:after{background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFCFCF 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFCFCF 50%) repeat scroll 0 0 transparent;}
+</style>
+
+<div class="bg_purple"><br><br><style><br>.one{border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;margin:10px auto;}<br>.two{-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;margin:10px auto;box-shadow:-4px 4px 3px -3px #000000;}<br>.three{-moz-transform:rotate(-30deg);-webkit-transform:rotate(-30deg);border:1px #000 solid;background:-moz-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;background:-webkit-linear-gradient(-150deg,#CFCFFF 50%,#FFFFA9 50%) repeat scroll 0 0 transparent;height:70px;width:40px;position:absolute;right:14px;top:-15px;box-shadow:-4px 4px 3px -3px #000000;}<br>.hidebg{border:1px #000 solid;content:””;background-color:#CFCFFF;height:40px;width:40px;position:absolute;right:0;top:0;}<br></style><br><br><p>第一步：做一个方框，利用linear-gradient属性，将矩形块的背景设置成以对角线分开，一边是背景色（紫色），一边是纸条的颜色（黄色）。两个渐变色的起始点设置成同一点，即50%，这样就可以在二分之一处颜色突变，从而产生一条明显的分界线的效果。然后用-150deg，把这条颜色分界线旋转为对角线。这里为了方便看清方块，将边框设置了1px</p><br><div class="one"></div><br><p>第二步：利用rotate，将它旋转，并且加上阴影。</p><br><div class="two"></div><br><p>第三步：放到大的div中，调整位置。</p><br><div class="tips yellow"><div class="three"></div>黄色纸条</div><br><p>第四步：加上一个块，把多余的背景盖住</p><br><div class="tips yellow"><div class="hidebg"></div><div class="three"></div>黄色纸条</div><br><p>OK！隐藏掉这些块的border之后就大功告成啦！</p><br><h1>CSS3实现折角Demo</h1><br><div class="tips conner yellow">黄色纸条</div><br><div class="tips conner green">绿色纸条</div><br><div class="tips conner red">红色纸条</div><br></div>
+
+
+
+<p>以下是相关代码</p>
+<p>css部分：</p>
+<pre><code><span class="variable"><span class="keyword">var</span> a</span>=<span class="number">1</span>;
+jaskdfjskldf;
+sadfasdf;
+</code></pre><p>html部分十分简洁：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"bg_purple"</span> &gt;
+    &lt;h1&gt;CSS3实现折角Demo&lt;/h1&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner yellow"</span> &gt;黄色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner green"</span> &gt;绿色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner red"</span> &gt;红色纸条&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre>
       
     </div>
     <footer>
