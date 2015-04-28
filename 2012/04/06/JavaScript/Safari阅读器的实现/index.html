@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Safari阅读器的实现 | QiangBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="苹果的 Safari 5 更新了一项有趣又实用的功能——阅读器，它可以自动去掉网页的边侧栏广告，页头页尾，抓取出网页的文章内容，以更清爽的界面显示给你。用户还可以自定义文章的字体大小。这一点对我来说十分有意义，因为相比android的浏览器，iphone的safari在缩放之后，不会根据文章内容重排版面，这样一来，看网页的文章就十分痛苦，字太小，放大了网页不会重排，需要横向的拖动很不方便。现在只需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Safari阅读器的实现">
+<meta property="og:url" content="http://zgr0629.github.io/2012/04/06/JavaScript/Safari阅读器的实现/index.html">
+<meta property="og:site_name" content="QiangBlog">
+<meta property="og:description" content="苹果的 Safari 5 更新了一项有趣又实用的功能——阅读器，它可以自动去掉网页的边侧栏广告，页头页尾，抓取出网页的文章内容，以更清爽的界面显示给你。用户还可以自定义文章的字体大小。这一点对我来说十分有意义，因为相比android的浏览器，iphone的safari在缩放之后，不会根据文章内容重排版面，这样一来，看网页的文章就十分痛苦，字太小，放大了网页不会重排，需要横向的拖动很不方便。现在只需">
+<meta property="og:image" content="/uploads/images/safari1.jpg">
+<meta property="og:image" content="/uploads/images/myreader1.jpg">
+<meta property="og:image" content="/uploads/images/qq新闻结构.jpg">
+<meta property="og:image" content="/uploads/images/qq新闻结构2.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Safari阅读器的实现">
+<meta name="twitter:description" content="苹果的 Safari 5 更新了一项有趣又实用的功能——阅读器，它可以自动去掉网页的边侧栏广告，页头页尾，抓取出网页的文章内容，以更清爽的界面显示给你。用户还可以自定义文章的字体大小。这一点对我来说十分有意义，因为相比android的浏览器，iphone的safari在缩放之后，不会根据文章内容重排版面，这样一来，看网页的文章就十分痛苦，字太小，放大了网页不会重排，需要横向的拖动很不方便。现在只需">
+  
+    <link rel="alternative" href="/atom.xml" title="QiangBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">QiangBlog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="q" value="site:http://zgr0629.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript/Safari阅读器的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/04/06/JavaScript/Safari阅读器的实现/" class="article-date">
+  <time datetime="2012-04-06T02:29:40.000Z" itemprop="datePublished">2012-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Safari阅读器的实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>苹果的 Safari 5 更新了一项有趣又实用的功能——阅读器，它可以自动去掉网页的边侧栏广告，页头页尾，抓取出网页的文章内容，以更清爽的界面显示给你。用户还可以自定义文章的字体大小。这一点对我来说十分有意义，因为相比android的浏览器，iphone的safari在缩放之后，不会根据文章内容重排版面，这样一来，看网页的文章就十分痛苦，字太小，放大了网页不会重排，需要横向的拖动很不方便。现在只需点击阅读器，把字体缩放到自己喜欢的大小就可以了。更重要的，对于那种把一个文章截分成很多页的网站，它会自动检测到有下一页，当你拖动到文章最下方的时候自动加载下一页内容，连成一篇完整的内容。这样就可以对讨厌的广告说拜拜了。</p>
+<p><img src="/uploads/images/safari1.jpg" alt="Safari的阅读器"></p>
+<p>正巧，前段时间方舟项目要开发一项网页采集的功能。开发初期，网页采集类似花瓣网的图片采集。之后又新加入了视频，最后产品定位到加入新闻采集这个功能，其要求跟Safari阅读器很相似，也是提取网页的主体部分供用户编辑、采集。于是我花了一些时间来研究这个功能的实现。在完成了公司项目的需求之后，花了一周时间做成了一个单独的版本，放在自己的博客服务器上。这样一来，这个浏览器就可以摆脱浏览器的束缚，实现跨浏览器阅读了。</p>
+<p><img src="/uploads/images/myreader1.jpg" alt="我的阅读器"></p>
+<p>Demo<a href="/lab/reader/">在此</a></p>
+<hr>
+<p>这里记一点开发这个东西的经历。</p>
+<p>对于这种新东西的开发，我的习惯是模拟人类的体验，先以最接近人类实践方式实现，再来逐步优化。对于一个新闻网页来说，当一个人眼（而不是机器或者程序）看到这个网站之后，这个人到底是怎么分辨出网页的主题文章的呢？或者说，当一个人看到网页的时候，是网页的那些特性，使得这个人明白，网页的“这一部分”就是网页的主题文章呢？一般而言（恩，对于我自己而言），最醒目，拥有最大的字体的，加粗字体，是标题。而文章一般是在标题之下且有相对大段文字的块。所以方案初定为：先找出body内拥有最大字体的标签，然后找到这个标题的兄弟节点，以及标题父亲的兄弟，然后找到字最多的，那么就认为他是文章主体了。这种最初的方式实现起来非常简单，但是效果也非常不好，因为一旦某个网页中标题不是最大字体，那么文章也会找错。比如人人网的导航栏是字体最大的，百度博客的博客名是字体最大的。而且对于结构不是预期结构的网站（实际上大多数都不会是预期的结构，例如<a href="http://news.qq.com/a/20120302/000095.htm" target="_blank" rel="external">http://news.qq.com/a/20120302/000095.htm</a>）。标题和正文所在的标签可能会包含在不同块里。这样提取出来的会包含一些无用的评论信息和广告。所以这个方法，很快被放弃了。</p>
+<p><img src="/uploads/images/qq新闻结构.jpg" alt="QQ新闻结构"></p>
+<p>接下来我得彻底换个思路来思考这个问题，提取文章到底能不能按照人的视觉方式来？在试过很多方法，例如面积，颜色之类之后，我放弃了，毕竟人机在认识事物上肯定是有不小差距的。既然机器不能按照类似人类视觉的方式来寻找文章主题部分，那么机器能获取到什么呢？机器可以拿到各种标签，以及这些标签的名字、类名、位置信息，这些东西都是数据化的，于是我想到，何不把网站的css去掉看看，一个无样式的新闻页面，对于人类来说是怎样找文章的呢。结果是即使没有样式，我也能一下子找到文章主体部分。因为去掉css之后的页面有很大一个特点：不是文章的部分，大多数都是各种广告的连接。于是一个这样的想法诞生了：把那些全是连接的块去掉。</p>
+<p><img src="/uploads/images/qq新闻结构2.jpg" alt="QQ新闻结构2"></p>
+<p><em>去掉css后很容易发现广告的特点</em></p>
+<p>做到这一步之后，效果比之前那惨不忍睹的要强多了。但是去的还不够干净，因为有些广告是只有一张图的。有的新闻页下方会有一些相关评论，或者边块会有一些文字但是不是连接。于是我又得想一些办法去改进。<a href="http://weibo.com/u/1715308911" title="七宝" target="_blank" rel="external">七宝</a>的提醒让我发现，html5里有一些语义化的标签，例如nav，head之类的，明显告诉我这一块不是文章，而在html5还没有普及的现在，有些div的类名也包含有article、content、news，这岂不是就暗示了这一块很可能是文章么。于是我豁然开朗，这样，进一步的优化方法也出来了。给定一个数组，记录所有可能是文章的类名，和很可能不是文章的类名，然后在处理页面节点的初期进行打分，抽取出最高得分的块作为文章的主体。文章的标题则直接调用了原页面的document.title。经过这一步优化，效果已经非常不错了。</p>
+<p>这个时候我突然想起以前接触过一个叫做<a href="https://www.readability.com/" target="_blank" rel="external">readability</a>的网站，推出过一款iphone的工具，有read it later的功能，和方舟项目也比较相似。于是在网上搜了一下怎么实现，结果还真搜出一个<a href="http://code.google.com/p/arc90labs-readability/downloads/list" target="_blank" rel="external">readability的早期js源码项目</a>，看完我要吐血了，原来自己做的工作已经有前人干过了。不过现在它已经不是基于js了。又一搜，发现有各位大牛把这个js的开源项目做成各类语言的api，其中也有<a href="http://code.fivefilters.org/p/php-readability/" target="_blank" rel="external">php版本的</a>，这是<a href="https://github.com/feelinglucky/php-readability" target="_blank" rel="external">另外一个php版本的</a>。看了看源码，里面有一些思想比我这个牛逼多了，比如readability会对原页面分析多次，还有诸如对标签名或者id打分则和我的一样，这样一来，我把自己的代码中readability没有的部分整合进去，并且对中文本地化抓取优化，就成了现在<a href="/lab/reader/">qiangblog上的阅读器</a>。这里很想吐槽下国内网站标签的乱用，readability里面对视频直接整齐的用embed，但我这里要对国内众多视频的各种不同标签都要分析。</p>
+<p>现在这个版本的算法思想大致就是这样子了。可能前面的方法说的非常简单，但实际上在最终做出成品之前加了很多优化，例如对文字段落的统计方法，视频的选取，非可视块直接删除之类，这里就不详细说明了。</p>
+<p>总结一下，这个阅读器的优缺点。</p>
+<p>优点：相比Safari的阅读器，这个适用的范围更广，对所有的网页都可以去尝试处理。而不像Safari，说起来Safari很“阴险”，只对处理效果好的页面才点亮阅读器的按钮，处理不来的网页压根不出现阅读器这个功能。由于直接获得文章的html代码了。如果以后想做二次处理十分方便，例如分享提取之后的文章给某人邮件。</p>
+<p>缺点：缺点真不少，整个阅读器都是模仿模仿模仿，动画效果极力模仿，界面风格模仿，但是速度却比Safari慢，卡。不能加载下一页。由于阅读器是基于服务器处理的，在天朝伟大的G*F+W阻拦之下，难免会出现用户能访问页面，而博客服务器却拉取不到页面的尴尬问题。解决办法是放到本地js处理页面，但是会牺牲我的浏览体验，浏览器在处理文章的时候会卡主不动几秒，很不爽，所以我丢到服务端处理了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2012/04/06/JavaScript/Safari阅读器的实现/" data-id="ci8zwxisi000ewchommsh94qg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Safari/">Safari</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读器/">阅读器</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2012/05/02/JavaScript/Textarea大小自适应/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Textarea大小自适应
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/03/05/未分类/世界，你好！/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">世界，你好！</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Safari/">Safari</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/call-chain-Javascript-链式调用/">call, chain , Javascript , 链式调用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/textarea-前端技术-大小自适应-自适应/">textarea , 前端技术 , 大小自适应 , 自适应</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读器/">阅读器</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Safari/" style="font-size: NaNpx;">Safari</a><a href="/tags/call-chain-Javascript-链式调用/" style="font-size: NaNpx;">call, chain , Javascript , 链式调用</a><a href="/tags/textarea-前端技术-大小自适应-自适应/" style="font-size: NaNpx;">textarea , 前端技术 , 大小自适应 , 自适应</a><a href="/tags/阅读器/" style="font-size: NaNpx;">阅读器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/27/服务器/Linux命令后台运行/">Linux命令后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/">Mac下配置iTerm2+oh-my-zsh</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/25/Mac/Mac下免密码ssh远程主机/">Mac下免密码ssh远程主机</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/">Mac下通过HomeBrew安装Nginx的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2013/03/26/服务器/PHP的单例模式/">PHP的单例模式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Gary<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

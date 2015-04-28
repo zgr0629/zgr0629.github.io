@@ -3,17 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2012 | QiangBlog</title>
+  <title>Mac下免密码ssh远程主机 | QiangBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QiangBlog">
-<meta property="og:url" content="http://zgr0629.github.io/archives/2012/index.html">
+  <meta name="description" content="近来发现iTerm2实在酸爽，于是想把一切都配到iTerm2上。之前我用的是SecureCRT登陆机器，比较方便，这下直接变成命令行了，研究了一下免密码登陆机器的方法，总结如下。
+生成自己的公钥和私钥$ ssh-keygen
+一路回车，需要特别注意的是，passphrase这里是设置公钥加密的，请直接回车。不然ssh是免输密码，可使用公钥又要密码。运行以上命令后，会在~/.ssh下生成两个文件，i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下免密码ssh远程主机">
+<meta property="og:url" content="http://zgr0629.github.io/2015/04/25/Mac/Mac下免密码ssh远程主机/index.html">
 <meta property="og:site_name" content="QiangBlog">
-<meta property="og:description">
+<meta property="og:description" content="近来发现iTerm2实在酸爽，于是想把一切都配到iTerm2上。之前我用的是SecureCRT登陆机器，比较方便，这下直接变成命令行了，研究了一下免密码登陆机器的方法，总结如下。
+生成自己的公钥和私钥$ ssh-keygen
+一路回车，需要特别注意的是，passphrase这里是设置公钥加密的，请直接回车。不然ssh是免输密码，可使用公钥又要密码。运行以上命令后，会在~/.ssh下生成两个文件，i">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QiangBlog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Mac下免密码ssh远程主机">
+<meta name="twitter:description" content="近来发现iTerm2实在酸爽，于是想把一切都配到iTerm2上。之前我用的是SecureCRT登陆机器，比较方便，这下直接变成命令行了，研究了一下免密码登陆机器的方法，总结如下。
+生成自己的公钥和私钥$ ssh-keygen
+一路回车，需要特别注意的是，passphrase这里是设置公钥加密的，请直接回车。不然ssh是免输密码，可使用公钥又要密码。运行以上命令后，会在~/.ssh下生成两个文件，i">
   
     <link rel="alternative" href="/atom.xml" title="QiangBlog" type="application/atom+xml">
   
@@ -59,172 +65,73 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2012" class="archive-year">2012</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/17/CSS/CSS3 实现折纸角效果/" class="archive-article-date">
-  <time datetime="2012-07-17T12:13:00.000Z" itemprop="datePublished">Jul 17</time>
+        <section id="main"><article id="post-Mac/Mac下免密码ssh远程主机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/25/Mac/Mac下免密码ssh远程主机/" class="article-date">
+  <time datetime="2015-04-25T10:34:00.000Z" itemprop="datePublished">2015-04-25</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/17/CSS/CSS3 实现折纸角效果/">CSS3 实现折纸角效果</a>
+    <h1 class="article-title" itemprop="name">
+      Mac下免密码ssh远程主机
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/" class="archive-article-date">
-  <time datetime="2012-07-11T10:57:39.000Z" itemprop="datePublished">Jul 11</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/">【学习笔记】 精通JavaScript (一)</a>
-    </h1>
-  
+        <p>近来发现iTerm2实在酸爽，于是想把一切都配到iTerm2上。<br>之前我用的是SecureCRT登陆机器，比较方便，这下直接变成命令行了，研究了一下免密码登陆机器的方法，总结如下。</p>
+<h3 id="生成自己的公钥和私钥">生成自己的公钥和私钥</h3><pre><code><span class="variable">$ </span>ssh-keygen
+</code></pre><p>一路回车，需要特别注意的是，passphrase这里是设置公钥加密的，请直接回车。不然ssh是免输密码，可使用公钥又要密码。<br>运行以上命令后，会在~/.ssh下生成两个文件，id_rsa.pub和id_rsa。第一个是你的公钥，第二个是你的私钥。</p>
+<h3 id="为Mac安装ssh-copy-id命令">为Mac安装ssh-copy-id命令</h3><p>接下来需要用ssh-copy-id命令把自己的公钥放到远程机上，让远程机认识你。但是Mac原生并没有Linux下的ssh-copy-id命令，使用万能的homebrew来安装一下。</p>
+<pre><code>$ brew install ssh-<span class="keyword">copy</span>-<span class="property">id</span>
+</code></pre><h3 id="拷贝公钥">拷贝公钥</h3><p>安装完成后可以使用ssh-copy-id命令拷贝自己的公钥到远程机上</p>
+<pre><code>$ ssh-<span class="keyword">copy</span>-<span class="property">id</span> username@host.com
+</code></pre><p>同样一路回车，这样就把你的公钥放到远程机器username用户的文件夹下，在~/.ssh/authorized_keys文件里。文件的最后会有你本机的名字。</p>
+<h3 id="大功告成">大功告成</h3><p>此后只需使用这个命令就可以免密码登陆远程主机。</p>
+<pre><code><span class="variable">$ </span>ssh username<span class="variable">@host</span>.com
+</code></pre><h3 id="别忘了Alias">别忘了Alias</h3><pre><code><span class="variable">$ </span><span class="keyword">alias</span> dev=<span class="string">"ssh 'username@host.com'"</span>
+</code></pre><p>然后把上面的这段放到~./bash_profile里，于是我了解到这个世界上是没有最懒只有更懒的:)</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/04/JavaScript/使用eval动态创建js函数/" class="archive-article-date">
-  <time datetime="2012-07-04T10:26:00.000Z" itemprop="datePublished">Jul 4</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/04/JavaScript/使用eval动态创建js函数/">使用eval动态创建js函数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/" class="archive-article-date">
-  <time datetime="2012-05-10T12:54:01.000Z" itemprop="datePublished">May 10</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2015/04/25/Mac/Mac下免密码ssh远程主机/" data-id="ci8zwxis40008wcho1yoqmb33" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/">用.htaccess将主域名从网站根目录指向子目录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/03/JavaScript/Javascript实现简单的链式调用/" class="archive-article-date">
-  <time datetime="2012-05-03T02:56:00.000Z" itemprop="datePublished">May 3</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/03/JavaScript/Javascript实现简单的链式调用/">Javascript实现简单的链式调用</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/02/JavaScript/Textarea大小自适应/" class="archive-article-date">
-  <time datetime="2012-05-02T03:49:00.000Z" itemprop="datePublished">May 2</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/02/JavaScript/Textarea大小自适应/">Textarea大小自适应</a>
-    </h1>
+    <a href="/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mac下配置iTerm2+oh-my-zsh
+        
+      </div>
+    </a>
   
+  
+    <a href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac下通过HomeBrew安装Nginx的坑</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/04/06/JavaScript/Safari阅读器的实现/" class="archive-article-date">
-  <time datetime="2012-04-06T02:29:40.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/04/06/JavaScript/Safari阅读器的实现/">Safari阅读器的实现</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/03/05/未分类/世界，你好！/" class="archive-article-date">
-  <time datetime="2012-03-05T06:24:00.000Z" itemprop="datePublished">Mar 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/03/05/未分类/世界，你好！/">世界，你好！</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 </section>
         
           <aside id="sidebar">

@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2012 | QiangBlog</title>
+  <title>Mac下通过HomeBrew安装Nginx的坑 | QiangBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="QiangBlog">
-<meta property="og:url" content="http://zgr0629.github.io/archives/2012/index.html">
+  <meta name="description" content="Homebrew是Mac下一个非常方便的包管理器。最近用brew自动升级了nginx之后发现原本可以自启动的nginx无法自启动了。查console，发现是因为权限不够。想起来因为配置的服务器端口是80，小于1024需要root权限。而brew的安装，是把/usr/local/opt/nginx软连接到真正的nginx目录。
+ZGR-MacBook-Pro:~ zgr0629$ ll /usr/l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac下通过HomeBrew安装Nginx的坑">
+<meta property="og:url" content="http://zgr0629.github.io/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/index.html">
 <meta property="og:site_name" content="QiangBlog">
-<meta property="og:description">
+<meta property="og:description" content="Homebrew是Mac下一个非常方便的包管理器。最近用brew自动升级了nginx之后发现原本可以自启动的nginx无法自启动了。查console，发现是因为权限不够。想起来因为配置的服务器端口是80，小于1024需要root权限。而brew的安装，是把/usr/local/opt/nginx软连接到真正的nginx目录。
+ZGR-MacBook-Pro:~ zgr0629$ ll /usr/l">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QiangBlog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Mac下通过HomeBrew安装Nginx的坑">
+<meta name="twitter:description" content="Homebrew是Mac下一个非常方便的包管理器。最近用brew自动升级了nginx之后发现原本可以自启动的nginx无法自启动了。查console，发现是因为权限不够。想起来因为配置的服务器端口是80，小于1024需要root权限。而brew的安装，是把/usr/local/opt/nginx软连接到真正的nginx目录。
+ZGR-MacBook-Pro:~ zgr0629$ ll /usr/l">
   
     <link rel="alternative" href="/atom.xml" title="QiangBlog" type="application/atom+xml">
   
@@ -59,172 +62,76 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2012" class="archive-year">2012</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/17/CSS/CSS3 实现折纸角效果/" class="archive-article-date">
-  <time datetime="2012-07-17T12:13:00.000Z" itemprop="datePublished">Jul 17</time>
+        <section id="main"><article id="post-Mac/Mac下通过HomeBrew安装Nginx的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/" class="article-date">
+  <time datetime="2015-04-22T15:21:00.000Z" itemprop="datePublished">2015-04-22</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/17/CSS/CSS3 实现折纸角效果/">CSS3 实现折纸角效果</a>
+    <h1 class="article-title" itemprop="name">
+      Mac下通过HomeBrew安装Nginx的坑
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/" class="archive-article-date">
-  <time datetime="2012-07-11T10:57:39.000Z" itemprop="datePublished">Jul 11</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/">【学习笔记】 精通JavaScript (一)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/07/04/JavaScript/使用eval动态创建js函数/" class="archive-article-date">
-  <time datetime="2012-07-04T10:26:00.000Z" itemprop="datePublished">Jul 4</time>
-</a>
+        <p><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>是Mac下一个非常方便的包管理器。<br>最近用brew自动升级了nginx之后发现原本可以自启动的nginx无法自启动了。<br>查console，发现是因为权限不够。想起来因为配置的服务器端口是80，小于1024需要root权限。<br>而brew的安装，是把/usr/local/opt/nginx软连接到真正的nginx目录。</p>
+<pre><code>ZGR-MacBook-<span class="string">Pro:</span>~ zgr0629$ ll <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx
+lrwxr-xr-x  <span class="number">1</span> zgr0629  admin    <span class="number">21</span>B Apr <span class="number">20</span> <span class="number">16</span>:<span class="number">52</span> <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx@ -&gt; ..<span class="regexp">/Cellar/</span>nginx/<span class="number">1.6</span>.3
+ZGR-MacBook-<span class="string">Pro:</span>~ zgr0629$ 
+</code></pre><p>于是对比了一下老版本nginx的bin文件权限，果然和现在的不一样。<br>用下面的命令改掉就好了。</p>
+<pre><code>sudo chown <span class="string">root:</span>wheel <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>nginx<span class="regexp">/1.6.3/</span>sbin/nginx
+sudo chmod u+s <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>nginx<span class="regexp">/1.6.3/</span>sbin/nginx
+</code></pre><p>另外，由于Mac的防火墙无视软连接，只记录真实的地址，所以在防火墙设置里，还需要更新为新的nginx路径。否则其他人无法看到你的主机。</p>
+<p>再来补充一个命令，能够方便的重启各种服务。<br>Github上gapple已经在<a href="https://github.com/Homebrew/homebrew-services" title="Homebrew Services" target="_blank" rel="external">这里</a>写了一个第三方的命令行，让services命令回来了。</p>
+<p>安装</p>
+<pre><code><span class="title">brew</span> tap homebrew/services
+</code></pre><p>使用</p>
+<pre><code>brew <span class="operator"><span class="keyword">install</span> mysql
+brew services <span class="keyword">start</span> mysql
+brew services <span class="keyword">stop</span> mysql</span>
+</code></pre>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/07/04/JavaScript/使用eval动态创建js函数/">使用eval动态创建js函数</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/" class="archive-article-date">
-  <time datetime="2012-05-10T12:54:01.000Z" itemprop="datePublished">May 10</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/" data-id="ci8zwxis10007wcho8m1ddbqy" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/">用.htaccess将主域名从网站根目录指向子目录</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/03/JavaScript/Javascript实现简单的链式调用/" class="archive-article-date">
-  <time datetime="2012-05-03T02:56:00.000Z" itemprop="datePublished">May 3</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/03/JavaScript/Javascript实现简单的链式调用/">Javascript实现简单的链式调用</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/05/02/JavaScript/Textarea大小自适应/" class="archive-article-date">
-  <time datetime="2012-05-02T03:49:00.000Z" itemprop="datePublished">May 2</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/05/02/JavaScript/Textarea大小自适应/">Textarea大小自适应</a>
-    </h1>
+    <a href="/2015/04/25/Mac/Mac下免密码ssh远程主机/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mac下免密码ssh远程主机
+        
+      </div>
+    </a>
   
+  
+    <a href="/2013/03/26/服务器/PHP的单例模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP的单例模式</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/04/06/JavaScript/Safari阅读器的实现/" class="archive-article-date">
-  <time datetime="2012-04-06T02:29:40.000Z" itemprop="datePublished">Apr 6</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/04/06/JavaScript/Safari阅读器的实现/">Safari阅读器的实现</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2012/03/05/未分类/世界，你好！/" class="archive-article-date">
-  <time datetime="2012-03-05T06:24:00.000Z" itemprop="datePublished">Mar 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2012/03/05/未分类/世界，你好！/">世界，你好！</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 </section>
         
           <aside id="sidebar">

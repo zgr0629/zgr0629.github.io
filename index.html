@@ -61,197 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-用.htaccess将主域名从网站根目录指向子目录" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-服务器/Linux命令后台运行" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/15/用.htaccess将主域名从网站根目录指向子目录/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: 用.htaccess将主域名从网站根目录指向子目录</p>
-<p>Date: 2012-05-10 20:54:01</p>
-<p>URL: /redirect-your-website-rootdir-to-subdir-by-using-htaccess-file/</p>
-<p>Tags: .htaccess , 重定向</p>
-<p>这个博客原本是要访问 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 来访问的。</p>
-<p>我在根目录下放了一个 index.html ，里面的 js 控制自动跳转到 /blog。这样一来，访问<a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 会自动跳到 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 去。</p>
-<p>但是今天突然想把自己的网站整一下，因为这个自动跳转很不利于SEO，而且 qiangblog 这个域名有很强的博客意向。如果总有个 /blog 挂在后面感觉不好看呐。所以我想弄成直接访问 <a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 就到博客里。并且相应的子目录依旧能用 <a href="http://www.qiangblog.com/subdir" target="_blank" rel="external">http://www.qiangblog.com/subdir</a> 访问。</p>
-<p>最简单的方法是把 wordpress 装在虚拟主机的根目录下。但是这样目录会变得杂乱，其他项目会跟博客弄到一起，对于整洁强迫症的我来说万万不可。后来看到 wordpress 里有<a href="http://codex.wordpress.org/zh-cn:将_WordPress_文件置于独立子目录" title="自带一种方法" target="_blank" rel="external">自带一种方法</a>实现这个功能。但是还是要改变目录结构，依旧不能达到我的要求。</p>
-<p>今天看到一个 .htaccess 的设置方法。可以实现我想要的效果。编辑根目录下的 .htaccess ，设置好相应参数就完全可以实现我想要的功能了。利于SEO是最爽的事情了~</p>
-<p>代码如下：</p>
-<pre><code><span class="comment"># .htaccess main domain to subfolder redirect</span>
-<span class="comment"># Copy and paste the following code into the .htaccess file</span>
-<span class="comment"># in the public_html folder of your hosting account</span>
-<span class="comment"># make the changes to the file according to the instructions.</span>
-
-<span class="comment"># Do not change this line.</span>
-
-<span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span>
-
-<span class="comment"># Change yourdomain.com to be your main domain.</span>
-
-<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
-
-<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
-
-<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_URI}</span> !^/subfolder/
-
-<span class="comment"># Don’t change this line.</span>
-
-<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-f
-<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-d
-
-<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
-
-<span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ /subfolder/<span class="number">$1</span>
-
-<span class="comment"># Change yourdomain.com to be your main domain again.</span>
-<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain</span>
-<span class="comment"># followed by / then the main file for your site, index.php, index.html, etc.</span>
-
-<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
-<span class="keyword"><span class="common">RewriteRule</span></span> ^(/)?$ subfolder/index.php<span class="sqbracket"> [L]</span>
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/用.htaccess将主域名从网站根目录指向子目录/" data-id="ci8zrgyjy0001rsho52w8nsxs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-使用eval动态创建js函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/使用eval动态创建js函数/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: 使用eval动态创建js函数</p>
-<p>Date: 2012-07-04 18:26:58</p>
-<p>URL: /use-eval-dynamically-create-functions/</p>
-<p>JavaScript有许多小窍门来使编程更加容易。</p>
-<p>其中之一就是eval()函数，这个函数可以把一个字符串当作一个JavaScript表达式一样去执行它。前段时间项目中就用到了这个技术，巧妙的解决了问题。</p>
-<p>项目中用到这样的技术：在本页用js拉取一个接口、告诉接口回调函数名、接口的回包里直接调用这个函数。这样一来，回调函数的调用，就全交给接口写的回包里做了。</p>
-<p>页面js如下</p>
-<pre><code>main()
-{
-    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface'</span>);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
-</span>{
-    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
-    ...
-    ...
-}
-</code></pre><p>someInterface的回包如下</p>
-<p>var return_obj={<br>    “retcode”:”200”,<br>    “msg”:”Query userid success!”,<br>    “username”:”xiaoqiang”<br>};if(typeof bk_someInterface==’function’) bk_someInterface(return_obj);</p>
-<p>这样做比较方便，回调函数名由调用的函数给接口，接口的回包照写函数名就行了。可是这里也会遇到一些问题，如果这个接口在同一页面需要同时多次调用，那么回调函数则会异步执行。在这种情况下，回调函数就不知道当前的回包数据对应的哪次请求了。以前的解决办法是多给接口一个参数，回包的时候照写就行了。这样，需要修改一下接口程序。</p>
-<p>以前的解决办法：</p>
-<pre><code>main()
-{
-    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
-    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface&amp;extra='</span> extraParameter);
-}
-<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
-</span>{
-    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
-    ...
-    ...
-}
-
-<span class="keyword">var</span> return_obj={
-    <span class="string">"retcode"</span>:<span class="string">"200"</span>,
-    <span class="string">"msg"</span>:<span class="string">"Query userid success!"</span>,
-    <span class="string">"extra"</span>:<span class="string">"0.1155661893165"</span>,
-    <span class="string">"username"</span>:<span class="string">"xiaoqiang"</span>
-};<span class="keyword">if</span>(<span class="keyword">typeof</span> bk_someInterface==<span class="string">'function'</span>) bk_someInterface(return_obj);
-</code></pre><p>如上，这样写需要改动接口程序，以前接口都是自己用自己写，加个参数之类的改动很方便，但不是所有的项目接口都是自己这边写，前段时间做项目就遇到这个情况，研究了下解决办法。以用JS里的eval动态创建函数来解决。</p>
-<p>思路是这样的，既然回包里固定了调用回调函数的格式，即 callbackfunctionname(return_obj)，那么改动就必须在其他地方完成。最终我需要回包里的return_obj对象和一些附加参数。那么就可以另外定义一个函数，作为新的回调函数，在这个函数里定义附加参数，然后把附加函数和 return_obj 一起传给原先的回调函数。这样就可以解决了。动态定义函数用eval完成即可。</p>
-<p>解决办法如下:</p>
-<pre><code>main()
-{
-    <span class="comment">//自定义的随机附加参数</span>
-    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
-    <span class="comment">//拿一个时间戳</span>
-    <span class="keyword">var</span> timestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();
-    <span class="comment">//定义动态函数名，函数名包含这个时间戳，保证不重名</span>
-    <span class="keyword">var</span> bkfunctionname = <span class="string">"bk_someInterface_"</span> + timestamp;
-    <span class="comment">//创建这个动态函数，函数里先定义了附加参数，然后调用原来的回调函数。</span>
-    <span class="built_in">eval</span>( bkfunctionname + <span class="string">' = function(retobj){var extra = "'</span>+extraParameter+<span class="string">'";bk_someInterface(retobj, extra);} '</span>);
-    <span class="comment">//所以在拉取接口的时候可以不用写 extraParameter，extraParameter 已经在新的回调中赋值了。</span>
-    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback='</span>+bkfunctionname);
-}
-
-<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj, _extra )</span>
-</span>{
-    <span class="comment">//这里是回调函数，处理 _return_obj 数据，同时也可以拿到自己定义的 _extra 了</span>
-    ...
-    ...
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/使用eval动态创建js函数/" data-id="ci8zrgyk10002rshoba3jtyi7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-世界，你好！" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/世界，你好！/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: 世界，你好！</p>
-<p>Date: 2012-03-05 14:24:46</p>
-<p>URL: /hello-world/</p>
-<p>工作一年了，特别谢谢七宝给我建立博客的建议。以前一直不注重这些东西，现在想想挺重要的。</p>
-<p>这个博客策划时间不长，主要想分享前端技术，记录自己工作中的经验，希望各位喜欢。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/世界，你好！/" data-id="ci8zrgyk20003rshoaxqim4yr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/hello-world/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
+    <a href="/2015/04/27/服务器/Linux命令后台运行/" class="article-date">
+  <time datetime="2015-04-27T06:51:00.000Z" itemprop="datePublished">2015-04-27</time>
 </a>
     
   </div>
@@ -262,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/15/hello-world/">Hello World</a>
+      <a class="article-title" href="/2015/04/27/服务器/Linux命令后台运行/">Linux命令后台运行</a>
     </h1>
   
 
@@ -270,306 +83,139 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <blockquote>
+<p>转自<a href="http://www.cnblogs.com/lwm-1988/archive/2011/08/20/2147299.html" target="_blank" rel="external">北国的雨</a>的cnblogs，我整理成markdown格式</p>
+</blockquote>
+<p>有两种方式： </p>
+<pre><code><span class="command"><span class="keyword">command</span> &amp; ： 后台运行，你关掉终端会停止运行</span>
+nohup <span class="command"><span class="keyword">command</span> &amp; ： 后台运行，你关掉终端也会继续运行</span>
+</code></pre><h2 id="简介">简介</h2><p>Linux/Unix 区别于微软平台最大的优点就是真正的多用户，多任务。因此在任务管理上也有别具特色的管理思想。<br>我们知道，在 Windows 上面，我们要么让一个程序作为服务在后台一直运行，要么停止这个服务。而不能让程序在前台后台之间切换。而 Linux 提供了 fg 和bg 命令，让你轻松调度正在运行的任务。假设你发现前台运行的一个程序需要很长的时间，但是需要干其他的事情，你就可以用 Ctrl-Z ，挂起这个程序，然后可以看到系统提示：</p>
+<pre><code>[<span class="number">1</span>]+ Stopped <span class="regexp">/root/</span>bin<span class="regexp">/rsync.sh</span>
+</code></pre><p>然后我们可以把程序调度到后台执行：（bg 后面的数字为作业号）</p>
+<pre><code><span class="id">#bg</span> <span class="number">1</span>
+[<span class="number">1</span>]+ /root/bin/rsync<span class="class">.sh</span> &amp;
+</code></pre><p>用 jobs 命令查看正在运行的任务：</p>
+<pre><code><span class="id">#jobs</span>    
+[<span class="number">1</span>]+ Running /root/bin/rsync<span class="class">.sh</span> &amp;
+</code></pre><p>如果想把它调回到前台运行，可以用</p>
+<pre><code><span class="comment">#fg 1</span>
+/<span class="literal">root</span>/bin/rsync.sh
+</code></pre><p>这样，你在控制台上就只能等待这个任务完成了。</p>
+<p><strong><em>&amp;</em></strong> 将指令丢到后台中去执行<br><strong><em>[ctrl]+z</em></strong> 將前台任务丟到后台中暂停<br><strong><em>jobs</em></strong> 查看后台的工作状态<br><strong><em>fg %jobnumber</em></strong> 将后台的任务拿到前台来处理<br><strong><em>bg %jobnumber</em></strong> 将任务放到后台中去处理<br><strong><em>kill</em></strong> 管理后台的任务</p>
+<h3 id="&amp;">&amp;</h3><p>在Linux中，当在前台运行某个作业时，终端被该作业占据；而在后台运行作业时，它不会占据终端。可以使用&amp;命令把作业放到后台执行。实际上，这样是将命令放入到一个作业队列中了：</p>
+<pre><code>$ ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+[1] 17208
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/hello-world/" data-id="ci8zrgyk80004rshoop0cp4a6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+$ jobs -<span class="keyword">l</span>
+[1]+ 17208 Running                 ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+</code></pre><p>在后台运行作业时要当心：需要用户交互的命令不要放在后台执行，因为这样你的机器就会在那里傻等。不过，作业在后台运行一样会将结果输出到屏幕上，干扰你的工作。如果放在后台运行的作业会产生大量的输出，最好使用下面的方法把它的输出重定向到某个文件中：</p>
+<pre><code>command &gt;<span class="keyword">out</span>.<span class="keyword">file</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp;
+</code></pre><p>在上面的例子中，2&gt;&amp;1表示所有的标准输出和错误输出都将被重定向到一个叫做out.file 的文件中。 当你成功地提交进程以后，就会显示出一个进程号，可以用它来监控该进程，或杀死它。<br>例：查找名为“httpd.conf”的文件，并把所有标准输出和错误输出重定向到find.dt的文件中： </p>
+<pre><code># <span class="built_in">find</span> /etc/httpd/ -name <span class="string">"httpd.conf"</span> -<span class="built_in">print</span> &gt;<span class="built_in">find</span>.dt <span class="number">2</span>&gt;&amp;<span class="number">1</span> &amp; 
+[<span class="number">2</span>] <span class="number">7832</span> 
+</code></pre><p>成功提交该命令之后，系统给出了它的进程号7832。 对于已经在前台执行的命令，也可以重新放到后台执行，首先按ctrl+z暂停已经运行的进程，然后使用bg命令将停止的作业放到后台运行，例如对正在前台执行的tesh.sh使用ctrl+z挂起它：</p>
+<pre><code>$ ./<span class="keyword">test</span>.<span class="keyword">sh</span>
+[1]+ Stopped                 ./<span class="keyword">test</span>.<span class="keyword">sh</span>
 
+$ bg %1
+[1]+ ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
 
-  
-    <article id="post-[转]Javascript实现简单的链式调用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/[转]Javascript实现简单的链式调用/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: [转]Javascript实现简单的链式调用</p>
-<p>Date: 2012-05-03 10:56:11</p>
-<p>URL: /a-simple-way-of-the-javascript-chain-call/</p>
-<p>Tags: call , chain , Javascript , 链式调用</p>
-<p>昨天看到一篇很不错的链式调用文章，存在这里记一下。</p>
-<p>原帖地址：<a href="http://www.css88.com/archives/4524" title="http://www.css88.com/archives/4524" target="_blank" rel="external">http://www.css88.com/archives/4524</a></p>
-<p>用过jQuery的朋友一定对jQuery中方法的链式调用印象深刻，貌似现在很多库都支持了方法的链式调用,比如YUI3等。链式调用是一个非常不错的语法特性，能让代码更加简洁、易读。很多时候链式调用可以避免多次重复使用一个对象变量。今天有人在群里说起javascript链式调用，写了几个简单的实现方式共大家参考一下：</p>
-<p>一般我们我用函数构造一个类，例如：</p>
-<pre><code><span class="keyword">var</span> <span class="function"><span class="keyword">function</span> <span class="title">Dog</span><span class="params">(name,age)</span></span>{
-    <span class="keyword">this</span>.name = name;
-    <span class="keyword">this</span>.age = age;
-};
-Dog.prototype={
-    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-    },
-    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-    }
-};
-</code></pre><p>定义一个Dog类，并具备几个简单的方法</p>
-<pre><code>var dog1= <span class="keyword">new</span> <span class="type">Dog</span>(<span class="string">"旺旺"</span>,<span class="number">3</span>);
-dog1.getName<span class="literal">()</span>;
-dog1.getAge<span class="literal">()</span>;
-</code></pre><p>实例化，并且调用方法。</p>
-<p>要实现链式调用是非常简单的事情，唯一需要做的就是在每个方法后面返回this。例如：</p>
-<pre><code><span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-    <span class="keyword">this</span>.name = name;
-    <span class="keyword">this</span>.age = age;
-};
-Dog.prototype={
-    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    },
-    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    }
-};
+$ jobs -<span class="keyword">l</span>
+[1]+ 22794 Running                 ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+</code></pre><p>但是如上方到后台执行的进程，其父进程还是当前终端shell的进程，而一旦父进程退出，则会发送hangup信号给所有子进程，子进程收到hangup以后也会退出。如果我们要在退出shell的时候继续运行进程，则需要使用nohup忽略hangup信号，或者setsid将将父进程设为init进程(进程号为1)</p>
+<pre><code>$ echo $$
+21734
 
-<span class="keyword">var</span> dog1= <span class="keyword">new</span> Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>);
-dog1.getName().getAge();
-</code></pre><p>上面的代码可以看出，Dog方法上多了一段代码：return this;</p>
-<p>细心一点你会发现这里dog1实例前还需要一个new初始化，还是有点不方便。在改进一下：</p>
-<pre><code><span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-    <span class="keyword">this</span>.name = name;
-    <span class="keyword">this</span>.age = age;
-};
-Dog.prototype={
-    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    },
-    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    }
-    };
-    <span class="built_in">window</span>.Dogs=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-    <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
-};
-Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
-</code></pre><p>这里在window下定义一个Dogs方法，作为Dog的别名，这样就可以直接用Dogs(“旺旺”,3).getName().getAge();这样调用了。</p>
-<p>苛刻的网友说这样太暴露了，这样有两个全局变量变量Dog和Dogs，在改进一下：</p>
-<pre><code><span class="keyword">var</span> Dog = <span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-    <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
-        <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
-    }
-    <span class="keyword">this</span>.name = name;
-    <span class="keyword">this</span>.age = age;
-};
+$ nohup ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+[1] 29016
 
-Dog.prototype={
-    getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    },
-    getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-        <span class="keyword">return</span> <span class="keyword">this</span>;
-    }
-};
-Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
-</code></pre><p>这里在构造函数中加了这么一句：</p>
-<pre><code><span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
-    <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
-}
-</code></pre><p>判断this是否为Dog实例，如果不是就创建一个新实例。</p>
-<p>更为安全代码：</p>
-<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    <span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-        <span class="keyword">if</span>(!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Dog)){
-            <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
-        }
-        <span class="keyword">this</span>.name = name;
-        <span class="keyword">this</span>.age = age;
-    };
-    Dog.prototype={
-        getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-            <span class="keyword">return</span> <span class="keyword">this</span>;
-        },
-        getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-            <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-            <span class="keyword">return</span> <span class="keyword">this</span>;
-        }
-    };
-    <span class="keyword">return</span> (<span class="built_in">window</span>.Dog=Dog);
-})();
-Dog(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
-</code></pre><p>或者：</p>
-<pre><code>(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-    <span class="keyword">var</span> Dog=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-        <span class="keyword">this</span>.name = name;
-        <span class="keyword">this</span>.age = age;
-    };
-    Dog.prototype={
-        getName:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-            <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
-            <span class="keyword">return</span> <span class="keyword">this</span>;
-        },
-        getAge:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
-            <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);
-            <span class="keyword">return</span> <span class="keyword">this</span>;
-        }
-    };
-    <span class="built_in">window</span>.Dogs=<span class="function"><span class="keyword">function</span><span class="params">(name,age)</span></span>{
-        <span class="keyword">return</span> <span class="keyword">new</span> Dog(name,age);
-    };
-})();
-Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName().getAge();
-</code></pre><p>希望对新手有所帮助，如有不对之处欢迎留言拍砖斧正！</p>
+$ ps -ef | grep <span class="keyword">test</span>
+515      29710 21734 0 11:47 pts/12   00:00:00 /bin/<span class="keyword">sh</span> ./<span class="keyword">test</span>.<span class="keyword">sh</span>
+515      29713 21734 0 11:47 pts/12   00:00:00 grep <span class="keyword">test</span>
+$ setsid ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+[1] 409
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/[转]Javascript实现简单的链式调用/" data-id="ci8zrgyk90005rshoywk3xvha" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+$ ps -ef | grep <span class="keyword">test</span>
+515        410     1 0 11:49 ?        00:00:00 /bin/<span class="keyword">sh</span> ./<span class="keyword">test</span>.<span class="keyword">sh</span>
+515        413 21734 0 11:49 pts/12   00:00:00 grep <span class="keyword">test</span>
+</code></pre><p>上面的试验演示了使用nohup/setsid加上&amp;使进程在后台运行，同时不受当前shell退出的影响。那么对于已经在后台运行的进程，该怎么办呢？可以使用disown命令：</p>
+<pre><code>$ ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
+[1] 2539
 
+$ jobs -<span class="keyword">l</span>
+[1]+ 2539 Running                 ./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;
 
-  
-    <article id="post-Verite Timeline" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/Verite Timeline/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: Verite Timeline</p>
-<p>Date: 2012-04-26 16:05:34</p>
-<p>Status: draft</p>
-<p>[timeline src=”<a href="https://docs.google.com/spreadsheet/pub?key=0Alk_U5fNEpNfdE50QUx1cmJwUERXcjZjNXQ2d1hiMEE&amp;output=html" target="_blank" rel="external">https://docs.google.com/spreadsheet/pub?key=0Alk_U5fNEpNfdE50QUx1cmJwUERXcjZjNXQ2d1hiMEE&amp;output=html</a>“ width=”100%” height=”650” maptype=”terrain”]</p>
+$ disown -<span class="keyword">h</span> %1
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/Verite Timeline/" data-id="ci8zrgykb0006rsho7zqj5dnp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+$ ps -ef | grep <span class="keyword">test</span>
+515        410     1 0 11:49 ?        00:00:00 /bin/<span class="keyword">sh</span> ./<span class="keyword">test</span>.<span class="keyword">sh</span>
+515       2542 21734 0 11:52 pts/12   00:00:00 grep <span class="keyword">test</span>
+</code></pre><p>另外还有一种方法，即使将进程在一个subshell中执行，其实这和setsid异曲同工。方法很简单，将命令用括号() 括起来即可：</p>
+<pre><code>$ (./<span class="keyword">test</span>.<span class="keyword">sh</span> &amp;)
 
+$ ps -ef | grep <span class="keyword">test</span>
+515        410     1 0 11:49 ?        00:00:00 /bin/<span class="keyword">sh</span> ./<span class="keyword">test</span>.<span class="keyword">sh</span>
+515      12483 21734 0 11:59 pts/12   00:00:00 grep <span class="keyword">test</span>
+</code></pre><blockquote>
+<p>注：本文试验环境为Red Hat Enterprise Linux AS release 4 (Nahant Update 5),shell为/bin/bash，不同的OS和shell可能命令有些不一样。例如AIX的ksh，没有disown，但是可以使用nohup -p PID来获得disown同样的效果。</p>
+</blockquote>
+<p>还有一种更加强大的方式是使用screen，首先创建一个断开模式的虚拟终端，然后用-r选项重新连接这个虚拟终端，在其中执行的任何命令，都能达到nohup的效果，这在有多个命令需要在后台连续执行的时候比较方便：</p>
+<pre><code>$ screen -dmS screen_test
 
-  
-    <article id="post-Textarea大小自适应" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/15/Textarea大小自适应/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Title: Textarea大小自适应</p>
-<p>Date: 2012-05-02 11:49:49</p>
-<p>URL: /textarea-size-auto-adaptation/</p>
-<p>Tags: textarea , 前端技术 , 大小自适应 , 自适应</p>
-<p>很久很久以前，七宝帮远在英国的肉肉同学重构一个网页，网页上有个留言的textarea。</p>
-<p>由此她给我提了一个页面的问题：如何让一个textarea的大小根据内容来自动变大呢，类似微博那种。</p>
-<p>当时研究了一下，原本的思路是计算单个文字大小高度，然后算有多少行然后调整高度。发现有兼容性问题，而且也比较麻烦。</p>
-<p>昨天彻底的研究了一下，换了一个思路。因为DOM中，scrollHeight这个属性，可以取到该元素实际内容的高度，这样，就可以直接把textarea高度设置成scrollHeight就行了。方法简单了许多。最近在做模块化的东西，很想脱离jQuery的束缚，所以这次全部用DOM操作，做成了独立的一个js。</p>
-<p>适用于主流浏览器，自测ie7/8/9,FireFox 10,Chrome 20.0.1096.1 通过。</p>
-<p>Demo<a href="/lab/autotextarea/autotextarea.html" title="autoTextarea Demo">在此</a></p>
-<p>以下是相关代码</p>
-<p>autoTextarea.js:</p>
-<pre><code><span class="keyword">var</span> autoTextarea = <span class="function"><span class="keyword">function</span> <span class="params">(elem)</span>
-</span>{
-    elem.style.resize = <span class="string">'none'</span>;
+$ screen -<span class="type">list</span>
+There <span class="keyword">is</span> a screen <span class="function_start"><span class="keyword">on</span></span>:
+        <span class="number">27963.</span>screen_test       (Detached)
+<span class="number">1</span> Socket <span class="keyword">in</span> /tmp/uscreens/S-jiangfeng.
 
-    minHeight = elem.currentStyle ?
-        <span class="built_in">parseFloat</span>(elem.currentStyle[<span class="string">'height'</span>]) : <span class="built_in">parseFloat</span>(<span class="built_in">document</span>.defaultView.getComputedStyle(elem, <span class="literal">null</span>)[<span class="string">'height'</span>]);
-
-    <span class="keyword">var</span> adjust = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{
-        <span class="keyword">if</span> (elem._length === elem.value.length) <span class="keyword">return</span>;
-        elem._length = elem.value.length;
-
-        elem.style.height = minHeight + <span class="string">'px'</span>;
-        <span class="keyword">if</span> (elem.scrollHeight &gt; minHeight)
-        {
-            elem.style.overflowY = <span class="string">'hidden'</span>;
-            elem.style.height = elem.scrollHeight + <span class="string">'px'</span>;
-        }
-
-    };
-
-    addEvent = <span class="function"><span class="keyword">function</span> <span class="params">(type, callback)</span> </span>{
-        elem.addEventListener ?
-            elem.addEventListener(type, callback, <span class="literal">false</span>) :
-            elem.attachEvent(<span class="string">'on'</span> + type, callback);
-    };
-
-    addEvent(<span class="string">'keydown'</span>, adjust);
-    addEvent(<span class="string">'keyup'</span>, adjust);
-    addEvent(<span class="string">'propertyadjust'</span>, adjust);
-    addEvent(<span class="string">'input'</span>, adjust);
-    addEvent(<span class="string">'focus'</span>, adjust);
-    adjust();
-};
-</code></pre><p>autoTextarea.html:</p>
-<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">http-equiv</span>=<span class="value">"Content-Type"</span> <span class="attribute">content</span>=<span class="value">"text/html; charset=utf-8"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span>文本框自适应<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"autoTextarea.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">style</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span><span class="css">
-        <span class="id">#textarea</span> <span class="rules">{
-            <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200px</span></span></span>;
-            <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;
-            <span class="rule"><span class="attribute">overflow-y</span>:<span class="value"> hidden</span></span>;
-            <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#000</span></span></span>;
-        }</span>
-    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>请在下面的输入框输入内容测试自适应<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">id</span>=<span class="value">"textarea"</span>&gt;</span><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span>
-
-    <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="applescript">
-        var <span class="type">text</span> = document.getElementById(<span class="string">"textarea"</span>);
-        autoTextarea(<span class="type">text</span>);
-    </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+$ screen -r screen_test
+</code></pre><h2 id="nohup">nohup</h2><p>如果你正在运行一个进程，而且你觉得在退出帐户时该进程还不会结束，那么可以使用nohup命令。该命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思( no hang up)。 该命令的一般形式为： </p>
+<pre><code><span class="title">nohup</span> conmmand &amp;
+</code></pre><p>如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件：</p>
+<pre><code>nohup <span class="command"><span class="keyword">command</span> &gt; <span class="title">myout</span>.<span class="title">file</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span> </span>
+</code></pre><p>在上面的例子中，输出被重定向到myout.file文件中。</p>
+<h2 id="、-*，？，[…]，[!…]等">、.*，？，[…]，[!…]等</h2><p>下面就是这些特殊字符： </p>
+<ul>
+<li>*匹配文件名中的任何字符串，包括空字符串。 </li>
+<li>？ 匹配文件名中的任何单个字符。 </li>
+<li>[…] 匹配[ ]中所包含的任何字符。 </li>
+<li>[!…] 匹配[ ]中非感叹号！之后的字符。 </li>
+<li>当s h e l l遇到上述字符时，就会把它们当作特殊字符，而不是文件名中的普通字符，这样用户就可以用它们来匹配相应的文件名。</li>
+</ul>
+<p><strong><em>一些例子</em></strong></p>
+<ol>
+<li><p>列出以i或o开头的文件名：</p>
+<pre><code><span class="id">#ls</span> <span class="attr_selector">[io]</span>*
+</code></pre></li>
+<li><p>列出log.开头、后面跟随一个数字、然后可以是任意字符串的文件名：</p>
+<pre><code><span class="id">#ls</span> <span class="tag">log</span>.<span class="attr_selector">[0-9]</span>* 
+</code></pre></li>
+<li><p>与例二相反，列出log.开头、后面不跟随一个数字、然后可以是任意字符串的文件名：</p>
+<pre><code><span class="id">#ls</span> <span class="tag">log</span>.<span class="attr_selector">[!0-9]</span>* 
+</code></pre></li>
+<li><p>列出所有以LPS开头、中间可以是任何两个字符，最后以1结尾的文件名：</p>
+<pre><code><span class="preprocessor">#ls LPS??1</span>
+</code></pre></li>
+<li><p>列出所有以大写字母开头的文件名：</p>
+<pre><code>$ ls [<span class="literal">A</span>-Z]*
+</code></pre></li>
+<li><p>列出所有以. 开头的文件名（隐含文件，例如. profile、.rhosts、.histo ry等）：</p>
+<pre><code><span class="variable">$ </span>ls .*
+</code></pre></li>
+</ol>
+<h2 id="其他相关命令：">其他相关命令：</h2><ul>
+<li>jobs：查看当前有多少在后台运行的命令</li>
+<li>fg：将后台中的命令调至前台继续运行。如果后台中有多个命令，可以用 fg %jobnumber将选中的命令调出，%jobnumber是通过jobs命令查到的后台正在执行的命令的序号(不是pid)</li>
+<li>bg：将一个在后台暂停的命令，变成继续执行。如果后台中有多个命令，可以用bg %jobnumber将选中的命令调出，%jobnumber是通过jobs命令查到的后台正在执行的命令的序号(不是pid)</li>
+</ul>
+<h2 id="杀死进程">杀死进程</h2><p>杀死已经启动的程序和普通方式一样：</p>
+<pre><code>pkill -<span class="number">9</span> <span class="property">name</span>
+killall <span class="property">name</span>
+kill pid
 </code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/Textarea大小自适应/" data-id="ci8zrgykd0007rshoazdfkerf" class="article-share-link">Share</a>
+      <a data-url="http://zgr0629.github.io/2015/04/27/服务器/Linux命令后台运行/" data-id="ci8zwxirw0005wchoi33vhk3f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,22 +225,199 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
 
 
   
-    <article id="post-PHP的单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mac/Mac下配置iTerm2+oh-my-zsh" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/15/PHP的单例模式/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
+    <a href="/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/" class="article-date">
+  <time datetime="2015-04-26T09:29:00.000Z" itemprop="datePublished">2015-04-26</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/">Mac下配置iTerm2+oh-my-zsh</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Title: PHP的单例模式</p>
-<p>Date: 2013-03-26 15:30:02</p>
-<p>URL: /singleton-pattern-with-php/</p>
-<p>接上一次的《<a href="/post/tree-structure-with-php/" title="PHP实现树形结构">PHP实现树形结构</a>》。由于菜单中的各种品类基本不变，跑同一次程序时候不会变化，所以只需在数据库查询一次，第一次初始化的时候查询好结果，以后每次取用即可直接返回。这里用php实现单例模式就能实现。</p>
+        <blockquote>
+<p>这篇帖子，记录一下这两天Mac下安装iTerm2，以及配置zsh + oh-my-zsh的一些步骤和坑</p>
+</blockquote>
+<p>上个星期逛知乎的时候翻到一篇帖子：<a href="http://www.zhihu.com/question/20873070" target="_blank" rel="external">程序员如何优雅的使用Mac</a>，看完之后对里面的<a href="http://www.iterm2.com/" target="_blank" rel="external">iTerm2</a>非常感兴趣，一通折腾。</p>
+<h3 id="安装iTerm2">安装iTerm2</h3><p>非常简单，直接去官网下载最新的就好了。</p>
+<h3 id="安装zsh">安装zsh</h3><p>zsh是一个可以替换bash的东西，拥有强大的功能，Mac就用万能的brew安装就好了</p>
+<pre><code><span class="title">brew</span> <span class="built_in">info</span> zsh
+</code></pre><p>安装完成后会生成zsh的配置文件，放在~/.zshrc。这个配置文件是zsh的入口，每次开启新的terminal的时候都会读取这里的配置。不过先不要着急改这个配置文件，待会它就会被omz替换掉了。</p>
+<h3 id="安装oh-my-zsh">安装oh-my-zsh</h3><p>oh-my-zsh是一套为方便配置zsh开发的开源框架，主要功能是增加了插件和主题。到目前为止，据<a href="http://ohmyz.sh/" target="_blank" rel="external">官网</a>所说，已经有180+个插件和140+个主题了。在官网下方可以方便的找到安装方法</p>
+<p><strong>通过Curl安装</strong></p>
+<pre><code><span class="variable">$ </span>curl -<span class="constant">L </span><span class="symbol">https:</span>/<span class="regexp">/raw.github.com/robbyrussell</span><span class="regexp">/oh-my-zsh/master</span><span class="regexp">/tools/install</span>.sh | sh
+</code></pre><p><strong>通过Wget安装</strong></p>
+<pre><code><span class="variable">$ </span>wget <span class="symbol">https:</span>/<span class="regexp">/raw.github.com/robbyrussell</span><span class="regexp">/oh-my-zsh/master</span><span class="regexp">/tools/install</span>.sh -<span class="constant">O </span>- | sh
+</code></pre><p>上面的任意一个命令会下载一个sh，然后运行它，运行完毕之后oh-my-zsh就安装完成了。omz    的安装会把之前提到的~/.zshrc备份为~/.zshrc.pre-oh-my-zsh，然后生成一个新的~/.zshrc替换掉原有的。打开这个新的看看里面的内容，有很大一部分注释，但是需要注意只有这几行：</p>
+<pre><code>export <span class="variable">ZSH=</span>/Users/zgr0629/.oh-my-zsh
+<span class="variable">ZSH_THEME=</span><span class="string">"robbyrussell"</span>
+<span class="variable">DEFAULT_USER=</span><span class="string">"zgr0629"</span>
+<span class="variable">plugins=</span>(git brew node npm)
+source $ZSH/oh-my-zsh.sh
+</code></pre><p>第一行定义了一个ZSH的变量，记录了omz的根目录<br>ZSH_THEME就是omz的主题了<br>DEFAULT_USER这里填上你的用户名之后可以隐藏命令行前面的用户，洁癖患者必备。<br>plugins这里按照自己的需要，可以加载各种插件。<br>最后，source命令把上述配置好的变量一并带到omz的脚本里执行，从而达到配置zsh的目的。</p>
+<h3 id="主题！主题！主题！">主题！主题！主题！</h3><p><strong><em>agnoster主题</em></strong><br>对，主题是一个非常重要的功能，谁希望整天对着黑白的shell做一整天。OMZ有非常多的主题，<a href="https://gist.github.com/3712874" target="_blank" rel="external">这个连接里</a>有很多可以选，大部分都有截图，不过基本上都是用agnoster，配上强大的solarized配色方案，和powerline（提供git提示符），就会有下面的效果了。<br><img src="~/18-49-14.jpg" alt=""><br>使用这个agnoster主题很简单，先</p>
+<pre><code><span class="title">vi</span> ~/.zshrc
+</code></pre><p>把里面的</p>
+<pre><code><span class="setting">ZSH_THEME=<span class="value"><span class="string">"robbyrussell"</span></span></span>
+</code></pre><p>改为</p>
+<pre><code><span class="setting">ZSH_THEME=<span class="value"><span class="string">"agnoster"</span></span></span>
+</code></pre><p>然后:wq，重新打开iTerm2就行了，当然，这个时候的效果还不会跟上图一样，因为还需要配置下面几个东东。</p>
+<p><strong><em>Powerline字体</em></strong><br>如同上面看到的特殊三角或者是分支的图案，这个是patch到字体里面的，所以如果你要使用这种功能，必须把自己的字体给改了。你可以到<a href="https://github.com/powerline/fonts" target="_blank" rel="external">这里</a>下载别人已经patch好的字体，或者到<a href="https://github.com/powerline/fontpatcher" target="_blank" rel="external">这里</a>下载程序，自己patch。得到字体文件之后直接双击，点击InstallFont安装到系统备用。比如我就是用的Mac原生终端自己Menlo的Powerline版本，Menlo字体看习惯了，没办法。</p>
+<p><img src="~/QQ20150426-1.jpg" alt=""></p>
+<p><strong><em>Solarized配色方案</em></strong><br>这套配色方案看着不累，主页在<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">这里</a>，也可以从github上clone下来</p>
+<pre><code><span class="variable">$ </span>git clone <span class="symbol">git:</span>/<span class="regexp">/github.com/altercation</span><span class="regexp">/solarized.git</span>
+</code></pre><p>clone下来之后会看到很多文件夹，因为我们用的终端是iTerm2，所以找到solarized/iterm2-colors-solarized，里面有两个文件，一黑一白，双击就可以直接把这个Solarized的配色方案导入到iTerm2里面了。如果你需要其他的IDE或者终端也用这个配色方案，请找寻其他相应的文件夹。<br><img src="~/QQ20150426-2.jpg" alt=""></p>
+<h3 id="iTerm2的设置">iTerm2的设置</h3><p>准备材料都完成了，最后需要配置终端了。打开iTerm2的Preference—Profile—点选你要修改的Profile—Colors—Load Persets。如果上面的配色方案导入成功，iTerm2就会出现这两个预设方案。<br><img src="~/19-05-27.jpg" alt=""></p>
+<p>切换到Text，把Regular Font和Non-ASCII Font都改成刚才安装好的powerline字体。<br><img src="~/19-08-49.jpg" alt=""><br>最大的坑来了，一定记得把Text Rendering里的Drew bold text in bright colors给去掉，否则你ls的时候不论怎么设置都不会让列表着色。<br>其实不是因为没有着色，而是因为Solarized配色方案里面的Bright几个颜色就是这样的，可以翻回上面那张图看看。我整了一下午，终于发现不是设置原因而是配色方案本身有问题。。。</p>
+<p>经过以上的设置，iTerm2终于被调教的顺眼一些了。<br>从此，作为程序员的你，被妹纸看到竟然用Mac编程的时候，也会显得更高端了，不是吗？咦，我忘了，因为首先。。。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/" data-id="ci8zwxirz0006wcho6q72w3o0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mac/Mac下免密码ssh远程主机" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/25/Mac/Mac下免密码ssh远程主机/" class="article-date">
+  <time datetime="2015-04-25T10:34:00.000Z" itemprop="datePublished">2015-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/25/Mac/Mac下免密码ssh远程主机/">Mac下免密码ssh远程主机</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近来发现iTerm2实在酸爽，于是想把一切都配到iTerm2上。<br>之前我用的是SecureCRT登陆机器，比较方便，这下直接变成命令行了，研究了一下免密码登陆机器的方法，总结如下。</p>
+<h3 id="生成自己的公钥和私钥">生成自己的公钥和私钥</h3><pre><code><span class="variable">$ </span>ssh-keygen
+</code></pre><p>一路回车，需要特别注意的是，passphrase这里是设置公钥加密的，请直接回车。不然ssh是免输密码，可使用公钥又要密码。<br>运行以上命令后，会在~/.ssh下生成两个文件，id_rsa.pub和id_rsa。第一个是你的公钥，第二个是你的私钥。</p>
+<h3 id="为Mac安装ssh-copy-id命令">为Mac安装ssh-copy-id命令</h3><p>接下来需要用ssh-copy-id命令把自己的公钥放到远程机上，让远程机认识你。但是Mac原生并没有Linux下的ssh-copy-id命令，使用万能的homebrew来安装一下。</p>
+<pre><code>$ brew install ssh-<span class="keyword">copy</span>-<span class="property">id</span>
+</code></pre><h3 id="拷贝公钥">拷贝公钥</h3><p>安装完成后可以使用ssh-copy-id命令拷贝自己的公钥到远程机上</p>
+<pre><code>$ ssh-<span class="keyword">copy</span>-<span class="property">id</span> username@host.com
+</code></pre><p>同样一路回车，这样就把你的公钥放到远程机器username用户的文件夹下，在~/.ssh/authorized_keys文件里。文件的最后会有你本机的名字。</p>
+<h3 id="大功告成">大功告成</h3><p>此后只需使用这个命令就可以免密码登陆远程主机。</p>
+<pre><code><span class="variable">$ </span>ssh username<span class="variable">@host</span>.com
+</code></pre><h3 id="别忘了Alias">别忘了Alias</h3><pre><code><span class="variable">$ </span><span class="keyword">alias</span> dev=<span class="string">"ssh 'username@host.com'"</span>
+</code></pre><p>然后把上面的这段放到~./bash_profile里，于是我了解到这个世界上是没有最懒只有更懒的:)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2015/04/25/Mac/Mac下免密码ssh远程主机/" data-id="ci8zwxis40008wcho1yoqmb33" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mac/Mac下通过HomeBrew安装Nginx的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/" class="article-date">
+  <time datetime="2015-04-22T15:21:00.000Z" itemprop="datePublished">2015-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/">Mac下通过HomeBrew安装Nginx的坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>是Mac下一个非常方便的包管理器。<br>最近用brew自动升级了nginx之后发现原本可以自启动的nginx无法自启动了。<br>查console，发现是因为权限不够。想起来因为配置的服务器端口是80，小于1024需要root权限。<br>而brew的安装，是把/usr/local/opt/nginx软连接到真正的nginx目录。</p>
+<pre><code>ZGR-MacBook-<span class="string">Pro:</span>~ zgr0629$ ll <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx
+lrwxr-xr-x  <span class="number">1</span> zgr0629  admin    <span class="number">21</span>B Apr <span class="number">20</span> <span class="number">16</span>:<span class="number">52</span> <span class="regexp">/usr/</span>local<span class="regexp">/opt/</span>nginx@ -&gt; ..<span class="regexp">/Cellar/</span>nginx/<span class="number">1.6</span>.3
+ZGR-MacBook-<span class="string">Pro:</span>~ zgr0629$ 
+</code></pre><p>于是对比了一下老版本nginx的bin文件权限，果然和现在的不一样。<br>用下面的命令改掉就好了。</p>
+<pre><code>sudo chown <span class="string">root:</span>wheel <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>nginx<span class="regexp">/1.6.3/</span>sbin/nginx
+sudo chmod u+s <span class="regexp">/usr/</span>local<span class="regexp">/Cellar/</span>nginx<span class="regexp">/1.6.3/</span>sbin/nginx
+</code></pre><p>另外，由于Mac的防火墙无视软连接，只记录真实的地址，所以在防火墙设置里，还需要更新为新的nginx路径。否则其他人无法看到你的主机。</p>
+<p>再来补充一个命令，能够方便的重启各种服务。<br>Github上gapple已经在<a href="https://github.com/Homebrew/homebrew-services" title="Homebrew Services" target="_blank" rel="external">这里</a>写了一个第三方的命令行，让services命令回来了。</p>
+<p>安装</p>
+<pre><code><span class="title">brew</span> tap homebrew/services
+</code></pre><p>使用</p>
+<pre><code>brew <span class="operator"><span class="keyword">install</span> mysql
+brew services <span class="keyword">start</span> mysql
+brew services <span class="keyword">stop</span> mysql</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/" data-id="ci8zwxis10007wcho8m1ddbqy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-服务器/PHP的单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/26/服务器/PHP的单例模式/" class="article-date">
+  <time datetime="2013-03-26T07:30:02.000Z" itemprop="datePublished">2013-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/26/服务器/PHP的单例模式/">PHP的单例模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>接上一次的《<a href="/post/tree-structure-with-php/" title="PHP实现树形结构">PHP实现树形结构</a>》。由于菜单中的各种品类基本不变，跑同一次程序时候不会变化，所以只需在数据库查询一次，第一次初始化的时候查询好结果，以后每次取用即可直接返回。这里用php实现单例模式就能实现。</p>
 <p>所谓单例模式是指整段程序中，类或者对象只会有一个实例的的设计模式。这种模式特别适合和数据库打交道的程序，比如上面所说的简历菜单树，因为只有一个实例，节省内资源，不用重复查询重复建立连接。</p>
 <p>要实现单例模式，以下两点是重点：</p>
 <p>1.他的构造函数必须声明为私有，否则其他地方可以随意new，失去了单例的意义。</p>
@@ -659,7 +482,7 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/PHP的单例模式/" data-id="ci8zrgykg0008rshos9rbtsmb" class="article-share-link">Share</a>
+      <a data-url="http://zgr0629.github.io/2013/03/26/服务器/PHP的单例模式/" data-id="ci8zwxirs0003wchodwpcppjb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -669,22 +492,29 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
 
 
   
-    <article id="post-PHP实现树形结构" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-服务器/PHP实现树形结构" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/15/PHP实现树形结构/" class="article-date">
-  <time datetime="2015-04-15T04:06:16.000Z" itemprop="datePublished">2015-04-15</time>
+    <a href="/2013/03/26/服务器/PHP实现树形结构/" class="article-date">
+  <time datetime="2013-03-26T06:43:23.000Z" itemprop="datePublished">2013-03-26</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/26/服务器/PHP实现树形结构/">PHP实现树形结构</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Title: PHP实现树形结构</p>
-<p>Date: 2013-03-26 14:43:23</p>
-<p>URL: /tree-structure-with-php/</p>
-<p>商城的菜单导航需要扩充大类，变成多级菜单。于是建立树形结构是比较好的方法。</p>
+        <p>商城的菜单导航需要扩充大类，变成多级菜单。于是建立树形结构是比较好的方法。</p>
 <p><a href="/uploads/images/shop_menu.jpg"><img src="/uploads/images/shop_menu.jpg" alt="商城菜单"></a></p>
 <p>一般来说，树形结构有两种方法存储，数组存储和节点指针方式。因为这次是给同事做底层库，菜单分类不多，撑死不会过一千。所以决定用数组方式，特点是快，易理解和调试。指针的调试怎么的也比数组来的难吧！</p>
 <p>现有的数据库表里，存有每个分类（node节点）的自身id和上级id。</p>
@@ -918,7 +748,7 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2015/04/15/PHP实现树形结构/" data-id="ci8zrgykh0009rshomhmlk3b5" class="article-share-link">Share</a>
+      <a data-url="http://zgr0629.github.io/2013/03/26/服务器/PHP实现树形结构/" data-id="ci8zwxiru0004wchomdogrf5v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -928,9 +758,9 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
 
 
   
-    <article id="post-CSS3 实现折纸角效果" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CSS/CSS3 实现折纸角效果" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/07/17/CSS3 实现折纸角效果/" class="article-date">
+    <a href="/2012/07/17/CSS/CSS3 实现折纸角效果/" class="article-date">
   <time datetime="2012-07-17T12:13:00.000Z" itemprop="datePublished">2012-07-17</time>
 </a>
     
@@ -942,7 +772,7 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/07/17/CSS3 实现折纸角效果/">CSS3 实现折纸角效果</a>
+      <a class="article-title" href="/2012/07/17/CSS/CSS3 实现折纸角效果/">CSS3 实现折纸角效果</a>
     </h1>
   
 
@@ -980,13 +810,316 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
 
 
 <p>以下是相关代码</p>
-<p>css部分：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a=1;</span><br><span class="line">jaskdfjskldf;</span><br><span class="line">sadfasdf;</span><br></pre></td></tr></table></figure></p>
-<p>html部分十分简洁：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"bg_purple"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>CSS3实现折角Demo<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tips conner yellow"</span> &gt;</span>黄色纸条<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tips conner green"</span> &gt;</span>绿色纸条<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"tips conner red"</span> &gt;</span>红色纸条<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-
+<p>css部分：</p>
+<pre><code><span class="class">.bg_purple</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#CFCFFF</span></span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">15px</span> auto</span></span>;<span class="rule"><span class="attribute">padding</span>:<span class="value"><span class="number">20px</span></span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="tag">h1</span><span class="rules">{<span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="class">.tips</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">300px</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">margin</span>:<span class="value"><span class="number">25px</span> auto</span></span>;<span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;<span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">100px</span></span></span>;<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">24px</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value">bold</span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="class">.conner</span><span class="rules">{<span class="rule"><span class="attribute">display</span>:<span class="value">block</span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="rule"><span class="attribute">.conner</span>:<span class="value">after{content:<span class="string">""</span></span></span>;<span class="rule"><span class="attribute">-moz-transform</span>:<span class="value"><span class="function">rotate</span>(-<span class="number">30deg</span>)</span></span>;<span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"><span class="function">rotate</span>(-<span class="number">30deg</span>)</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">-moz-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFFFA9</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">-webkit-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFFFA9</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">70px</span></span></span>;<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">40px</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">14px</span></span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value">-<span class="number">15px</span></span></span>;<span class="rule"><span class="attribute">box-shadow</span>:<span class="value">-<span class="number">4px</span> <span class="number">4px</span> <span class="number">3px</span> -<span class="number">3px</span> <span class="hexcolor">#000000</span></span></span>;}
+<span class="class">.bg_purple</span> <span class="rule"><span class="attribute">.conner</span>:<span class="value">before{content:<span class="string">""</span></span></span>;<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#CFCFFF</span></span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">40px</span></span></span>;<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">40px</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span>;}
+<span class="class">.bg_purple</span> <span class="class">.yellow</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#FFFFA9</span></span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="rule"><span class="attribute">.yellow</span>:<span class="value">after{background:<span class="function">-moz-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFFFA9</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">-webkit-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFFFA9</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;}
+<span class="class">.bg_purple</span> <span class="class">.green</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#CFFFCF</span></span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="rule"><span class="attribute">.green</span>:<span class="value">after{background:<span class="function">-moz-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#CFFFCF</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">-webkit-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#CFFFCF</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;}
+<span class="class">.bg_purple</span> <span class="class">.red</span><span class="rules">{<span class="rule"><span class="attribute">background-color</span>:<span class="value"><span class="hexcolor">#FFCFCF</span></span></span>;}</span>
+<span class="class">.bg_purple</span> <span class="rule"><span class="attribute">.red</span>:<span class="value">after{background:<span class="function">-moz-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFCFCF</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="function">-webkit-linear-gradient</span>(-<span class="number">150deg</span>,<span class="hexcolor">#CFCFFF</span> <span class="number">50%</span>,<span class="hexcolor">#FFCFCF</span> <span class="number">50%</span>) repeat scroll <span class="number">0</span> <span class="number">0</span> transparent</span></span>;}
+</code></pre><p>html部分十分简洁：</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"bg_purple"</span> &gt;
+    &lt;h1&gt;CSS3实现折角Demo&lt;/h1&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner yellow"</span> &gt;黄色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner green"</span> &gt;绿色纸条&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"tips conner red"</span> &gt;红色纸条&lt;/<span class="keyword">div</span>&gt;
+&lt;/<span class="keyword">div</span>&gt;
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zgr0629.github.io/2012/07/17/CSS3 实现折纸角效果/" data-id="ci8zrgyja0000rshorl43cojv" class="article-share-link">Share</a>
+      <a data-url="http://zgr0629.github.io/2012/07/17/CSS/CSS3 实现折纸角效果/" data-id="ci8zwxirc0000wchopg2rgiso" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/【学习笔记】 精通JavaScript (一)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/" class="article-date">
+  <time datetime="2012-07-11T10:57:39.000Z" itemprop="datePublished">2012-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/">【学习笔记】 精通JavaScript (一)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://book.douban.com/subject/3007076/" title="豆瓣读书对此书的介绍" target="_blank" rel="external">精通JavaScript</a>是我早就想学习的书。由于年代有些久远，市面上到处都找不到卖的，我也不习惯看电子书。无奈，只得从淘宝20块钱买盗版书。第一章很基础，看完了第二章，讲了很多面向对象编程的知识，感觉很有深度，有很多不知道的技巧，现在整理一下第二章里的重点。</p>
+<h2 id="引用">引用</h2><p>JavaScript是一个基于引用的系统，类似指针概念。但是引用的指向只是具体的对象，而不是另一个引用。不像Perl语言中允许许多层引用，JavaScript里的结果是沿着引用链一直上溯到原来那个对象。</p>
+<pre><code><span class="comment">//将 obj 置为空对象</span>
+<span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();
+<span class="comment">// objRef 是 obj 的引用</span>
+<span class="keyword">var</span> objRef = obj;
+<span class="comment">//修改原对象的一个属性</span>
+<span class="comment">//（注意，这里仅是修改，不会产生新的对象）</span>
+obj.oneProperty = <span class="keyword">true</span>;
+<span class="comment">//我们现在看到，这个改变在两个变量中都反映了出来</span>
+<span class="comment">//（因为阿门引用的是同一个变量）</span>
+alert(obj.oneProperty === objRef.oneProperty);
+</code></pre><hr>
+<pre><code><span class="keyword">var</span> items = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>);
+<span class="keyword">var</span> itemsRef = items;
+<span class="comment">//Array对象实质上是把每个元素作为属性保存</span>
+<span class="comment">//所以push()方法添加新元素的时候，没有产生新的变量</span>
+items.push(<span class="string">"four"</span>);
+<span class="comment">//这两个数组长度应该是一致的</span>
+<span class="comment">//因为他们指向同一个数组对象</span>
+alert(items.length === itemsRef.length);
+</code></pre><hr>
+<pre><code>var <span class="built_in">items</span> = <span class="keyword">new</span> Array(<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>);
+var itemsRef = <span class="built_in">items</span>;
+//将 <span class="built_in">items</span> 置为一个新的对象
+<span class="built_in">items</span> = <span class="keyword">new</span> Array(<span class="string">"four"</span>, <span class="string">"five"</span>);
+//这时 <span class="built_in">items</span> 和 itemsRef 指向不同对象了
+// itemsRef 还是指向原来的<span class="keyword">new</span> Array(<span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>);
+alert(<span class="built_in">items</span> != itemsRef);
+</code></pre><p>这里要特别注意，看似是自修改对象，其结果却产生了一个新的非引用对象。在执行字符串连接操作时，结果总会是一个新的字符串对象，而非源字符串的修改版本！</p>
+<pre><code><span class="variable"><span class="keyword">var</span> items</span> = <span class="string">"test"</span>;
+<span class="variable"><span class="keyword">var</span> itemsRef</span> = items;
+<span class="comment">//做一个字符串连接操作</span>
+<span class="comment">//注意：这会创建一个新对象，而非修改原对象</span>
+items += <span class="string">"ing"</span>;
+<span class="comment">//这时 items 和 itemsRef 的值不相等了。因为有新的字符串对象被创建。</span>
+alert(items != itemsRef);
+</code></pre><h2 id="对象">对象</h2><h3 id="共有，私有，特权方法">共有，私有，特权方法</h3><p>JavaScript也可以像其他面向对象语言创建各种权限的变量和方法。其中，特权方法，指的是能够访问并处理自身私有变量的方法。现整理如下。</p>
+<pre><code><span class="comment">//创建一个Classroom函数，类似c++里类的定义</span>
+<span class="function"><span class="keyword">function</span> <span class="title">Classroom</span><span class="params">(students, teacher)</span></span>{
+    <span class="comment">//公共变量</span>
+    <span class="keyword">this</span>.students = students;
+    <span class="keyword">this</span>.teacher = teacher;
+    <span class="comment">//私有变量</span>
+    <span class="keyword">var</span> namelist = <span class="keyword">this</span>.students.join(<span class="string">","</span>) + <span class="string">" : "</span> + <span class="keyword">this</span>.teacher.join(<span class="string">","</span>);
+
+    <span class="comment">//公共方法</span>
+    <span class="keyword">this</span>.disp = <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+        alert(<span class="string">"这是公共方法！"</span>);
+    }
+    <span class="keyword">this</span>.callprivatefunction = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>{
+        private_function();<span class="comment">//创建一个公共方法调用私有方法</span>
+    }
+    <span class="comment">//私有方法</span>
+    <span class="function"><span class="keyword">function</span> <span class="title">private_function</span><span class="params">()</span></span>{
+        alert(<span class="string">"这是私有方法！"</span>);
+    }
+    <span class="comment">//特权方法</span>
+    <span class="keyword">this</span>.disp_list = <span class="function"><span class="keyword">function</span> <span class="params">()</span></span>{
+        alert(<span class="string">"特权方法："</span> + namelist);<span class="comment">//特权方法可以公共访问，处理私有变量</span>
+    }
+
+}
+
+<span class="comment">//实例化Classroom类</span>
+<span class="keyword">var</span> class1 = <span class="keyword">new</span> Classroom([<span class="string">"zgr"</span>, <span class="string">"lsm"</span>], [<span class="string">"laoshi1"</span>, <span class="string">"laoshi2"</span>] );
+<span class="comment">//公共变量可以直接访问</span>
+alert(class1.students);
+alert(class1.teacher);
+<span class="comment">//私有变量直接访问不到，显示undefined</span>
+alert(class1.namelist);
+<span class="comment">//公共方法可以调用</span>
+class1.disp();
+<span class="comment">/*调用私有方法会报错
+class1.init();
+*/</span>
+<span class="comment">//这个公共方法是私有方法调用的接口</span>
+class1.callprivatefunction();
+<span class="comment">//特权方法可以调用，并且访问到私有变量</span>
+class1.disp_list();
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2012/07/11/JavaScript/【学习笔记】 精通JavaScript (一)/" data-id="ci8zwxis8000awchobd6zlf37" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript/使用eval动态创建js函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/07/04/JavaScript/使用eval动态创建js函数/" class="article-date">
+  <time datetime="2012-07-04T10:26:00.000Z" itemprop="datePublished">2012-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/07/04/JavaScript/使用eval动态创建js函数/">使用eval动态创建js函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript有许多小窍门来使编程更加容易。</p>
+<p>其中之一就是eval()函数，这个函数可以把一个字符串当作一个JavaScript表达式一样去执行它。前段时间项目中就用到了这个技术，巧妙的解决了问题。</p>
+<p>项目中用到这样的技术：在本页用js拉取一个接口、告诉接口回调函数名、接口的回包里直接调用这个函数。这样一来，回调函数的调用，就全交给接口写的回包里做了。</p>
+<p>页面js如下</p>
+<pre><code>main()
+{
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface'</span>);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
+    ...
+    ...
+}
+</code></pre><p>someInterface的回包如下</p>
+<p>var return_obj={<br>    “retcode”:”200”,<br>    “msg”:”Query userid success!”,<br>    “username”:”xiaoqiang”<br>};if(typeof bk_someInterface==’function’) bk_someInterface(return_obj);</p>
+<p>这样做比较方便，回调函数名由调用的函数给接口，接口的回包照写函数名就行了。可是这里也会遇到一些问题，如果这个接口在同一页面需要同时多次调用，那么回调函数则会异步执行。在这种情况下，回调函数就不知道当前的回包数据对应的哪次请求了。以前的解决办法是多给接口一个参数，回包的时候照写就行了。这样，需要修改一下接口程序。</p>
+<p>以前的解决办法：</p>
+<pre><code>main()
+{
+    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback=bk_someInterface&amp;extra='</span> extraParameter);
+}
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据</span>
+    ...
+    ...
+}
+
+<span class="keyword">var</span> return_obj={
+    <span class="string">"retcode"</span>:<span class="string">"200"</span>,
+    <span class="string">"msg"</span>:<span class="string">"Query userid success!"</span>,
+    <span class="string">"extra"</span>:<span class="string">"0.1155661893165"</span>,
+    <span class="string">"username"</span>:<span class="string">"xiaoqiang"</span>
+};<span class="keyword">if</span>(<span class="keyword">typeof</span> bk_someInterface==<span class="string">'function'</span>) bk_someInterface(return_obj);
+</code></pre><p>如上，这样写需要改动接口程序，以前接口都是自己用自己写，加个参数之类的改动很方便，但不是所有的项目接口都是自己这边写，前段时间做项目就遇到这个情况，研究了下解决办法。以用JS里的eval动态创建函数来解决。</p>
+<p>思路是这样的，既然回包里固定了调用回调函数的格式，即 callbackfunctionname(return_obj)，那么改动就必须在其他地方完成。最终我需要回包里的return_obj对象和一些附加参数。那么就可以另外定义一个函数，作为新的回调函数，在这个函数里定义附加参数，然后把附加函数和 return_obj 一起传给原先的回调函数。这样就可以解决了。动态定义函数用eval完成即可。</p>
+<p>解决办法如下:</p>
+<pre><code>main()
+{
+    <span class="comment">//自定义的随机附加参数</span>
+    <span class="keyword">var</span> extraParameter = <span class="built_in">Math</span>.random();
+    <span class="comment">//拿一个时间戳</span>
+    <span class="keyword">var</span> timestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();
+    <span class="comment">//定义动态函数名，函数名包含这个时间戳，保证不重名</span>
+    <span class="keyword">var</span> bkfunctionname = <span class="string">"bk_someInterface_"</span> + timestamp;
+    <span class="comment">//创建这个动态函数，函数里先定义了附加参数，然后调用原来的回调函数。</span>
+    <span class="built_in">eval</span>( bkfunctionname + <span class="string">' = function(retobj){var extra = "'</span>+extraParameter+<span class="string">'";bk_someInterface(retobj, extra);} '</span>);
+    <span class="comment">//所以在拉取接口的时候可以不用写 extraParameter，extraParameter 已经在新的回调中赋值了。</span>
+    $.getScript(<span class="string">'http://qiangblog.com/someInterface?callback='</span>+bkfunctionname);
+}
+
+<span class="function"><span class="keyword">function</span> <span class="title">bk_someInterface</span><span class="params">( _return_obj, _extra )</span>
+</span>{
+    <span class="comment">//这里是回调函数，处理 _return_obj 数据，同时也可以拿到自己定义的 _extra 了</span>
+    ...
+    ...
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2012/07/04/JavaScript/使用eval动态创建js函数/" data-id="ci8zwxis60009wcho1v7jm6n2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-服务器/用.htaccess将主域名从网站根目录指向子目录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/" class="article-date">
+  <time datetime="2012-05-10T12:54:01.000Z" itemprop="datePublished">2012-05-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/">用.htaccess将主域名从网站根目录指向子目录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这个博客原本是要访问 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 来访问的。</p>
+<p>我在根目录下放了一个 index.html ，里面的 js 控制自动跳转到 /blog。这样一来，访问<a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 会自动跳到 <a href="http://www.qiangblog.com/blog/" target="_blank" rel="external">http://www.qiangblog.com/blog/</a> 去。</p>
+<p>但是今天突然想把自己的网站整一下，因为这个自动跳转很不利于SEO，而且 qiangblog 这个域名有很强的博客意向。如果总有个 /blog 挂在后面感觉不好看呐。所以我想弄成直接访问 <a href="http://www.qiangblog.com/" target="_blank" rel="external">http://www.qiangblog.com/</a> 就到博客里。并且相应的子目录依旧能用 <a href="http://www.qiangblog.com/subdir" target="_blank" rel="external">http://www.qiangblog.com/subdir</a> 访问。</p>
+<p>最简单的方法是把 wordpress 装在虚拟主机的根目录下。但是这样目录会变得杂乱，其他项目会跟博客弄到一起，对于整洁强迫症的我来说万万不可。后来看到 wordpress 里有<a href="http://codex.wordpress.org/zh-cn:将_WordPress_文件置于独立子目录" title="自带一种方法" target="_blank" rel="external">自带一种方法</a>实现这个功能。但是还是要改变目录结构，依旧不能达到我的要求。</p>
+<p>今天看到一个 .htaccess 的设置方法。可以实现我想要的效果。编辑根目录下的 .htaccess ，设置好相应参数就完全可以实现我想要的功能了。利于SEO是最爽的事情了~</p>
+<p>代码如下：</p>
+<pre><code><span class="comment"># .htaccess main domain to subfolder redirect</span>
+<span class="comment"># Copy and paste the following code into the .htaccess file</span>
+<span class="comment"># in the public_html folder of your hosting account</span>
+<span class="comment"># make the changes to the file according to the instructions.</span>
+
+<span class="comment"># Do not change this line.</span>
+
+<span class="keyword"><span class="common">RewriteEngine</span></span> <span class="literal">on</span>
+
+<span class="comment"># Change yourdomain.com to be your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
+
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_URI}</span> !^/subfolder/
+
+<span class="comment"># Don’t change this line.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-f
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{REQUEST_FILENAME}</span> !-d
+
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain.</span>
+
+<span class="keyword"><span class="common">RewriteRule</span></span> ^(.*)$ /subfolder/<span class="number">$1</span>
+
+<span class="comment"># Change yourdomain.com to be your main domain again.</span>
+<span class="comment"># Change ’subfolder’ to be the folder you will use for your main domain</span>
+<span class="comment"># followed by / then the main file for your site, index.php, index.html, etc.</span>
+
+<span class="keyword"><span class="common">RewriteCond</span></span> <span class="cbracket">%{HTTP_HOST}</span> ^(www.)?yourmaindomain.com$
+<span class="keyword"><span class="common">RewriteRule</span></span> ^(/)?$ subfolder/index.php<span class="sqbracket"> [L]</span>
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zgr0629.github.io/2012/05/10/服务器/用.htaccess将主域名从网站根目录指向子目录/" data-id="ci8zwxirq0002wchomyygmc8b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -997,6 +1130,10 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
 
   
   
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
 </section>
         
           <aside id="sidebar">
@@ -1004,14 +1141,28 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
     
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Safari/">Safari</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/call-chain-Javascript-链式调用/">call, chain , Javascript , 链式调用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/textarea-前端技术-大小自适应-自适应/">textarea , 前端技术 , 大小自适应 , 自适应</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读器/">阅读器</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Safari/" style="font-size: NaNpx;">Safari</a><a href="/tags/call-chain-Javascript-链式调用/" style="font-size: NaNpx;">call, chain , Javascript , 链式调用</a><a href="/tags/textarea-前端技术-大小自适应-自适应/" style="font-size: NaNpx;">textarea , 前端技术 , 大小自适应 , 自适应</a><a href="/tags/阅读器/" style="font-size: NaNpx;">阅读器</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">March 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/07/">July 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/05/">May 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/04/">April 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/03/">March 2012</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1023,23 +1174,23 @@ Dogs(<span class="string">"旺旺"</span>,<span class="number">3</span>).getName
       <ul>
         
           <li>
-            <a href="/2015/04/15/用.htaccess将主域名从网站根目录指向子目录/">(no title)</a>
+            <a href="/2015/04/27/服务器/Linux命令后台运行/">Linux命令后台运行</a>
           </li>
         
           <li>
-            <a href="/2015/04/15/使用eval动态创建js函数/">(no title)</a>
+            <a href="/2015/04/26/Mac/Mac下配置iTerm2+oh-my-zsh/">Mac下配置iTerm2+oh-my-zsh</a>
           </li>
         
           <li>
-            <a href="/2015/04/15/世界，你好！/">(no title)</a>
+            <a href="/2015/04/25/Mac/Mac下免密码ssh远程主机/">Mac下免密码ssh远程主机</a>
           </li>
         
           <li>
-            <a href="/2015/04/15/hello-world/">Hello World</a>
+            <a href="/2015/04/22/Mac/Mac下通过HomeBrew安装Nginx的坑/">Mac下通过HomeBrew安装Nginx的坑</a>
           </li>
         
           <li>
-            <a href="/2015/04/15/[转]Javascript实现简单的链式调用/">(no title)</a>
+            <a href="/2013/03/26/服务器/PHP的单例模式/">PHP的单例模式</a>
           </li>
         
       </ul>
